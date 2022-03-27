@@ -1,43 +1,36 @@
 import pandas as pd
 
+lista_de_contas = []
 
 class Maquina:
-
+    precos = {'Alta':1,'Media':0.7,'Baixa':0.5}
     def __init__(self):
         self.__especificacoes = None
         self.__porcentagem_uso = None
-        self.__preco_aluguel = None
+        self.hora_aluguel = None
         self.em_uso = False
-        self.horas_em_uso = 0
-        self.ganhos = 0
+        self.__horas_em_uso = 0
+        self.__ganhos = 0
 
-    def gerar_aluguel(self):
-        return int
+    def __gerar_hora_aluguel(self):
+        hora_aluguel = self.__porcentagem_uso* self.precos[self.__especificacoes]
+        return hora_aluguel
 
     def criar_maquina(self, especificacoes, porcentagem_uso):
         self.__especificacoes = especificacoes
         self.__porcentagem_uso = porcentagem_uso
-        self.__preco_aluguel = self.gerar_aluguel()
+        self.hora_aluguel = self.__gerar_hora_aluguel()
         return self
 
 class Jogo:
-    def __init__(self, titulo, requisitos):
+    def __init__(self, titulo, requisitos, valor):
         self.__titulo = titulo
         self.__requisitos = requisitos
+        self.__valor = valor
 
-
-lista_de_contas = []
 
 
 # General Class Contada pra colocar uns hash no meio, esse é só o esqueleto)
-def logar(login, senha):
-    for conta in lista_de_contas:
-        if [login, senha] == [conta.login, conta.senha]:
-            print('logado')
-            return conta
-    else:
-        print('Usuario ou senha incorretos')
-        return None
 
 
 class Conta:
@@ -48,27 +41,16 @@ class Conta:
         self.tipo_da_conta = None
         pass
 
-    def __criar_conta(self, login, senha):
+    def criar_conta(self, login, senha):
+        print(self)
         lista_de_contas.append(self)
-
         self.login = login
         self.senha = senha
         self.Id = len(lista_de_contas)  # podemos fazer um jeito menos tantan de fazer isso depois
         return
 
-    def cadastrar_conta(self):
 
-        while True:
-            login = input("Digite seu login")
-            if login in [conta.login for conta in lista_de_contas]:
-                print('Login ja usado')
-                continue
 
-            else:
-                senha = input("Digite sua senha")
-                # faz um hash pra deixar mais seguro
-                self.__criar_conta(login, senha)
-                return
 
     def sacar_creditos(self): #Abstract method
         pass
@@ -96,14 +78,14 @@ class ContaDesenvolvedor(Conta):
 class ContaProvedor(Conta):
     def __init__(self):
         super().__init__()
-        self.__maquina = None
+        self.__maquinas = None
         self.jogos = None
         self.ganhos = 0
 
     def cadastrar_maquina(self):
         especificacoes = input("Insira as Especificacoes")
         porcentagem_uso = input("Insira as Porcentagem de Uso")
-        self.__maquina = Maquina().criar_maquina(especificacoes, porcentagem_uso)
+        self.__maquinas = Maquina().criar_maquina(especificacoes, porcentagem_uso)
         pass
 
     def remover_maquina(self):
@@ -136,9 +118,9 @@ class ContaProvedor(Conta):
 
 
 class ContaJogador(Conta):
-    def __init__(self, creditos, Id):
+    def __init__(self):
         super().__init__()
-        self.__creditos = creditos
+        self.__creditos = 0
 
     def alugar_jogo(self):
         pass
@@ -149,7 +131,8 @@ class Transacao:
         
         pass
 
-    def receber_creditos(self, creditos)
+    def receber_creditos(self, creditos):
+        pass
 
 # General Class Aluguel
 class Aluguel:
@@ -185,9 +168,6 @@ class RelatorioProvedor(Relatorio):
         super().__init__()
 
 
-def fazer_login():
-    login = input("Digite seu login")
-    senha = input("Digite sua senha")
 
 
 if __name__ == '__main__':
