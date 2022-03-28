@@ -124,7 +124,7 @@ while True:
         window['sair'].update(visible=True)
 
     if event == 'sair':
-        window['cabecalho'].update(visible=False)
+        window['cabecalho'].update('Login',visible=False)
         window['entradas'].update(visible=True)
         window['usuario'].update('', visible=True)
         window['senha'].update('', visible=True)
