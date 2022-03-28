@@ -80,7 +80,7 @@ class ContaDesenvolvedor(Conta):
 class ContaProvedor(Conta):
     def __init__(self):
         super().__init__()
-        self.__maquinas = None
+        self.__maquinas = list()
         self.jogos = None
         self.ganhos = 0
         self.tipo_da_conta = 'provedor'
