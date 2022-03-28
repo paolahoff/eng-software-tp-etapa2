@@ -131,3 +131,4 @@ while True:
             print('saindao de ',conta)
         if conta.tipo_da_conta == 'jogador':
             print('saindao de ',conta)
+#aa
