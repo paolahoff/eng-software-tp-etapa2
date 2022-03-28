@@ -1,8 +1,6 @@
 import pandas as pd
 
-
 lista_de_contas = []
-
 
 
 class Maquina:
@@ -24,6 +22,7 @@ class Maquina:
         self.__especificacoes = especificacoes
         self.__porcentagem_uso = porcentagem_uso
         self.hora_aluguel = self.__gerar_hora_aluguel()
+        print(f'maquina {self} cadastrada')
         return self
 
 
@@ -34,7 +33,7 @@ class Jogo:
         self.__valor = valor
 
 
-# General Class Contada pra colocar uns hash no meio, esse é só o esqueleto)
+
 
 
 class Conta:
@@ -50,7 +49,7 @@ class Conta:
         lista_de_contas.append(self)
         self.login = login
         self.senha = senha
-        self.Id = len(lista_de_contas)  # podemos fazer um jeito menos tantan de fazer isso depois
+        self.Id = len(lista_de_contas)
         return
 
     def sacar_creditos(self):  # Abstract method
@@ -177,4 +176,4 @@ class RelatorioProvedor(Relatorio):
 
 if __name__ == '__main__':
     pass
-#aa
+# aa

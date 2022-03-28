@@ -2,6 +2,8 @@ import PySimpleGUI as sg
 import classes
 
 sg.theme('Dark')
+
+## layout provisorio 100% sujeito a alteracoes e refatoracoes ##
 col_entradas = [
     [sg.Text('Usuario:', size=10, justification='r'), sg.InputText(key='usuario')],
     [sg.Text('Senha:', size=10, justification='r'), sg.InputText(key='senha')],
@@ -38,13 +40,14 @@ window = sg.Window('Cloud Gaming login', layout=layout)
 
 
 def logar(login, senha):
+    print('lista de usuarios cadastrados:')
     for conta in classes.lista_de_contas:
         print(conta.login)
         if [login, senha] == [conta.login, conta.senha]:
-            print('logado')
+            print(f'logado como: {login}')
             return conta
     else:
-        print('Usuario ou senha incorretos')
+        print('login falhou, usuario ou senha incorretos')
         return None
 
 
@@ -90,6 +93,7 @@ while True:
                 window['opcoes'].update(visible=False)
                 window['criar'].update(visible=False)
                 window['cabecalho'].update(visible=True)
+                sg.popup('conta criada')
 
     if event == 'logar':
         conta = logar(values['usuario'], values['senha'])
@@ -109,6 +113,7 @@ while True:
             window['sair'].update(visible=True)
 
     if event == 'cadastrar maquina':
+        window['sair'].update(visible=False)
         window['cadastrar maquina'].update(visible=False)
         window['cadastro_maquina'].update(visible=True)
 
@@ -116,6 +121,7 @@ while True:
         conta.cadastrar_maquina(values['especificacao'], int(values['porcentagem']) / 100)
         window['cadastrar maquina'].update(visible=True)
         window['cadastro_maquina'].update(visible=False)
+        window['sair'].update(visible=True)
 
     if event == 'sair':
         window['cabecalho'].update(visible=False)
