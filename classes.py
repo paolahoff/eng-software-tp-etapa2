@@ -1,4 +1,3 @@
-import pandas as pd
 
 lista_de_contas = []
 
@@ -7,6 +6,7 @@ class Maquina:
     precos = {'Alta': 1, 'Media': 0.7, 'Baixa': 0.5}
 
     def __init__(self):
+        self.nome = None
         self.__especificacoes = None
         self.__porcentagem_uso = None
         self.hora_aluguel = None
@@ -14,11 +14,21 @@ class Maquina:
         self.__horas_em_uso = 0
         self.__ganhos = 0
 
+    def zerar_ganhos(self):
+        self.__ganhos = 0
+        return
+
+    def editar(self, nome, especificacoes, porcentagem_uso):
+        self.nome = nome
+        self.__especificacoes = especificacoes
+        self.__porcentagem_uso = porcentagem_uso
+        return
     def __gerar_hora_aluguel(self):
         hora_aluguel = self.__porcentagem_uso * self.precos[self.__especificacoes]
         return hora_aluguel
 
-    def criar_maquina(self, especificacoes, porcentagem_uso):
+    def criar_maquina(self, especificacoes, porcentagem_uso ,nome):
+        self.nome = nome
         self.__especificacoes = especificacoes
         self.__porcentagem_uso = porcentagem_uso
         self.hora_aluguel = self.__gerar_hora_aluguel()
@@ -41,7 +51,6 @@ class Conta:
         self.Id = None
         self.login = None
         self.senha = None
-
         pass
 
     def criar_conta(self, login, senha):
@@ -85,19 +94,30 @@ class ContaProvedor(Conta):
         self.ganhos = 0
         self.tipo_da_conta = 'provedor'
 
-    def cadastrar_maquina(self, especificacao, porcentagem):
+    def cadastrar_maquina(self, especificacao, porcentagem ,nome):
         especificacoes = especificacao
         porcentagem_uso = porcentagem
-        self.__maquinas = Maquina().criar_maquina(especificacoes, porcentagem_uso)
+        self.__maquinas.append(Maquina().criar_maquina(especificacoes, porcentagem_uso ,nome))
         pass
 
-    def remover_maquina(self):
+    def listar_maquinas(self):
+        return self.__maquinas
+
+    def remover_maquina(self ,nome_maquina):
+        for maquina in self.__maquinas:
+            if maquina.nome == nome_maquina:
+                self.__maquinas.remove(maquina)
+                return True
+        return False
+
+    def editar_maquina(self, nome_maquina, nome_novo, especificacoes, porcentagem_uso):
+        for maquina in self.__maquinas:
+            if maquina.nome == nome_maquina:
+                maquina.editar(nome_novo ,especificacoes, porcentagem_uso)
+                return True
         pass
 
-    def editar_maquina(self):
-        pass
-
-    def __calcular_ganhos(self):
+    def calcular_ganhos(self):
         if self.__maquinas is None:
             print("Nenhuma maquina cadastrada")
             return None
@@ -107,9 +127,11 @@ class ContaProvedor(Conta):
         return self.ganhos
 
     def sacar_creditos(self):
-        # creditos = calcular_ganhos
-        # receber_dinheiro(creditos)
-        # self.ganhos = 0
+        creditos = self.calcular_ganhos
+        for maquina in self.__maquinas:
+            maquina.zerar_ganhos()
+        print(f'sacado:{creditos}')
+        self.ganhos = 0
         pass
 
     def alterar_aluguel(self):  # Verificaremos a necessidade

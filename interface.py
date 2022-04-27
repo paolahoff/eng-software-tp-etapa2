@@ -124,7 +124,7 @@ while True:
         window['sair'].update(visible=True)
 
     if event == 'sair':
-        window['cabecalho'].update(visible=False)
+        window['cabecalho'].update('login',visible=False)
         window['entradas'].update(visible=True)
         window['usuario'].update('', visible=True)
         window['senha'].update('', visible=True)
@@ -137,4 +137,3 @@ while True:
             print('saindao de ',conta)
         if conta.tipo_da_conta == 'jogador':
             print('saindao de ',conta)
-#aa
