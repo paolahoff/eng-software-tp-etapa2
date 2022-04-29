@@ -1,5 +1,6 @@
 import time
-from typing_extensions import Self
+import pickle
+#from typing_extensions import Self #Isso aqui bugou qq é isso?
 
 
 lista_de_contas = []
@@ -287,6 +288,31 @@ class RelatorioProvedor(Relatorio):
         super().__init__()
 
 
+def inicializar_dados():
+    with open('dados/contas', 'rb') as arquivo_contas:
+        lista_de_contas = pickle.load(arquivo_contas)
+    
+    with open('dados/maquinas', 'rb') as arquivo_maquinas:
+        lista_de_contas = pickle.load(arquivo_maquinas)
+    
+    with open('dados/jogos', 'rb') as arquivo_jogos:
+        lista_de_contas = pickle.load(arquivo_jogos)
+
+    return
+
+def salvar_dados():
+    with open('dados/contas', 'wb') as arquivo_contas:
+        pickle.dump(lista_de_contas,arquivo_contas)
+    
+    with open('dados/maquinas', 'wb') as arquivo_maquinas:
+        pickle.dump(lista_de_maquinas,arquivo_maquinas)
+    
+    with open('dados/jogos', 'wb') as arquivo_jogos:
+        pickle.dump(lista_de_jogos,arquivo_jogos)
+
+
 if __name__ == '__main__':
+    inicializar_dados()
+    salvar_dados()
     pass
 # aa
