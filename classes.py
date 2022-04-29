@@ -347,7 +347,6 @@ def salvar_dados():
 if __name__ == '__main__':
     inicializar_dados()
     print(lista_de_contas[0].login)
-    interface.main()
     #conta = ContaProvedor()
     #conta.criar_conta('waldas','123')
     salvar_dados()
