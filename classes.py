@@ -40,6 +40,7 @@ class Maquina:
         self.__especificacoes = especificacoes
         self.__porcentagem_uso = porcentagem_uso
         self.hora_aluguel = self.__gerar_hora_aluguel()
+        lista_de_maquinas.append(self)
         print(f'maquina {self} cadastrada')
         return self
 
@@ -80,7 +81,7 @@ class Jogo:
     
         lista_de_jogos.append(self)
         print(f'jogo {self} cadastrada')
-        return Self
+        return self
     
     def editar(self, titulo, requisitos, valor):
         self.__titulo = titulo
@@ -157,13 +158,27 @@ class ContaDesenvolvedor(Conta):
                 self.__jogos.remove(jogo)
         pass
 
+    def buscar_jogo(self,titulo):
+        for jogo in self.__jogos:
+            if jogo == titulo:
+                return True
+        
+        return False
+
+    def buscar_jogo_listado(self,titulo):
+        for jogo in lista_de_jogos:
+            if jogo.titulo == titulo:
+                return jogo
+       
+        return None
+
     def calcular_ganhos(self):           #Acho que vai ser melhor fazer a busca desse jeito, por mais que seja 
         if self.__jogos is None:         #mais longo, pois vai ser mais fácil de guardar no banco de dados vulgo TXT
             print("Nenhum jogo cadastrado")
             for titulo_jogo in self.__jogos:
-                for jogo in lista_de_jogos:
-                    if jogo.titulo == titulo_jogo:
-                        self.ganhos = jogo.calcular_ganhos()
+                jogo = self.buscar_jogo_listado(titulo_jogo)
+                self.ganhos += jogo.calcular_ganhos()
+            return self.ganhos
 
     def sacar_ganhos(self):
         creditos = self.calcular_ganhos
@@ -186,24 +201,41 @@ class ContaProvedor(Conta):
     def cadastrar_maquina(self, especificacao, porcentagem ,nome):
         especificacoes = especificacao
         porcentagem_uso = porcentagem
-        self.__maquinas.append(Maquina().criar_maquina(especificacoes, porcentagem_uso ,nome))
+        maquina = Maquina().criar_maquina(especificacoes, porcentagem_uso ,nome)
+        self.__maquinas.append(maquina.nome)
         pass
 
     def listar_maquinas(self):
         return self.__maquinas
 
-    def remover_maquina(self ,nome_maquina):
+    def buscar_maquina(self, nome_maquina):
         for maquina in self.__maquinas:
-            if maquina.nome == nome_maquina:
-                self.__maquinas.remove(maquina)
+            if maquina == nome_maquina:
                 return True
+
         return False
 
+    def buscar_maquina_listada(self, nome_maquina):
+        for maquina_listada in lista_de_maquinas:
+            if maquina_listada.nome == nome_maquina:
+                return maquina_listada
+        return None
+
+    def remover_maquina(self ,nome_maquina):
+        if self.buscar_maquina(nome_maquina):                   #Busca se tem o nome da maquina na lista do provedor
+            self.__maquinas.remove(nome_maquina)                #Remove o nome da maquina da lista de maquinas
+            maquina_listada = self.buscar_maquina_listada       #Busca a maquina na lista de maquinas
+            lista_de_maquinas.remove(maquina_listada)           #Remove a maquina da lista de maquinas
+            return True
+        else:   
+            return False
+
     def editar_maquina(self, nome_maquina, nome_novo, especificacoes, porcentagem_uso):
-        for maquina in self.__maquinas:
-            if maquina.nome == nome_maquina:
-                maquina.editar(nome_novo ,especificacoes, porcentagem_uso)
-                return True
+        if self.buscar_maquina(nome_maquina):
+            maquina = self.buscar_maquina_listada(nome_maquina)
+            maquina.editar(nome_novo, especificacoes, porcentagem_uso)
+            if nome_novo is not nome_maquina:
+                self.__maquinas = list(map(lambda x: x.replace(nome_maquina, nome_novo), self.__maquinas)) #Se o nome novo for diferente altera ele também na lista do provedor
         pass
 
     def calcular_ganhos(self):
@@ -290,13 +322,14 @@ class RelatorioProvedor(Relatorio):
 
 def inicializar_dados():
     with open('dados/contas', 'rb') as arquivo_contas:
-        lista_de_contas = pickle.load(arquivo_contas)
+        lista_de_contas.extend(pickle.load(arquivo_contas))
+        #print(lista_de_contas)
     
     with open('dados/maquinas', 'rb') as arquivo_maquinas:
-        lista_de_contas = pickle.load(arquivo_maquinas)
+        lista_de_maquinas.extend(pickle.load(arquivo_maquinas))
     
     with open('dados/jogos', 'rb') as arquivo_jogos:
-        lista_de_contas = pickle.load(arquivo_jogos)
+        lista_de_jogos.extend(pickle.load(arquivo_jogos))
 
     return
 
@@ -313,6 +346,10 @@ def salvar_dados():
 
 if __name__ == '__main__':
     inicializar_dados()
+    print(lista_de_contas[0].login)
+    interface.main()
+    #conta = ContaProvedor()
+    #conta.criar_conta('waldas','123')
     salvar_dados()
     pass
 # aa

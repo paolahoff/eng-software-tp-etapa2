@@ -1,9 +1,13 @@
 import PySimpleGUI as sg
+from classes import *
 import classes
 
 sg.theme('Dark')
 
 ## layout provisorio 100% sujeito a alteracoes e refatoracoes ##
+#classes.inicializar_dados()
+classes.inicializar_dados()
+
 col_entradas = [
     [sg.Text('Usuario:', size=10, justification='r'), sg.InputText(key='usuario')],
     [sg.Text('Senha:', size=10, justification='r'), sg.InputText(key='senha')],
@@ -54,7 +58,8 @@ def logar(login, senha):
 while True:
 
     event, values = window.read()
-    if event == sg.WINDOW_CLOSED:
+    if event == sg.WIN_CLOSED or event == 'Exit':
+        classes.salvar_dados()
         break
     if event == 'nova conta':
         window['usuario'].update('')
@@ -84,7 +89,7 @@ while True:
             else:
                 senha = values['senha']
                 tipos = {'Provedor': classes.ContaProvedor(), 'Desenvolvedor': classes.ContaDesenvolvedor(),
-                         'Jogador': classes.ContaJogador()}
+                        'Jogador': classes.ContaJogador()}
                 categorias = ['Provedor', 'Desenvolvedor', 'Jogador']
                 for x in categorias:
                     if values[x]:
