@@ -1,8 +1,10 @@
 from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
+from PySide2.QtCore import QEvent, QObject
 from ui_interface import Ui_MainWindow
 import sys
 import classes
 
+classes.inicializar_dados()
 
 # Mudei a biblioteca da interface pra usar o programinha de arrastar bloquinhos,
 # adicionei no git o arquivo que ele gera e a conversao pra python que a biblioteca gera
@@ -14,6 +16,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle('Cloud Gaming')
         self.conta = None
+        
         # botoes da pagina de login
         self.login_button.clicked.connect(self.logar)
         self.new_account_button_2.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastro))
@@ -55,6 +58,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # editar maquina
         self.voltar_edit.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_listaMaquinas))
 
+    def closeEvent(self, event):
+        if event.type() == QEvent.Close:
+            exit_question = QMessageBox.question(self, "Aviso de Saida", "Você realmente deseja sair?", QMessageBox.Yes|QMessageBox.No)
+            classes.salvar_dados()
+            if exit_question == QMessageBox.Yes:
+                event.accept()
+                return True
+            if exit_question == QMessageBox.No:
+                event.ignore()
+                return True
+        else:
+            event.ignore()
+            return True
 
     def a_definir(self):
         pass

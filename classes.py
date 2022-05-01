@@ -1,3 +1,4 @@
+from queue import Empty
 import time
 import pickle
 
@@ -57,8 +58,8 @@ class Maquina:
         if jogo == None:
             return None
         else:
-            jogo.registrar_maquina()  # pra possibilitar pesquisa por máquina ou por jogo
-            self.jogos.append(jogo)  # Não sei se fazemos assim ou colocando apenas o Titulo
+            jogo.registrar_maquina(self.nome)  # pra possibilitar pesquisa por máquina ou por jogo
+            self.jogos.append(jogo.titulo)  
         pass
 
 
@@ -110,6 +111,9 @@ class Jogo:
     def get_desenvolvedor(self):  # Viajei achando que ia precisar disso, mas vou deixar aqui vai que
         return self.__desenvolvedor
 
+    def alugar(self, horas):
+        self.tempo_jogado += horas
+        return self
 
 class Conta:
     def __init__(self):
@@ -270,6 +274,22 @@ class ContaJogador(Conta):
         self.__creditos = 0
         self.tipo_da_conta = 'jogador'
 
+    def buscar_maquinas_com_jogo(self, titulo):
+        maquinas_com_jogo = []
+        for jogo in lista_de_jogos:
+            if jogo.titulo == titulo:
+                maquinas_com_jogo = jogo.maquinas
+
+        return maquinas_com_jogo
+
+    def buscar_jogos_na_maquina(self, nome_maquina):
+        jogos_na_maquina = []
+        for maquina in lista_de_maquinas:
+            if maquina.nome == nome_maquina:
+                jogos_na_maquina = maquina.jogos
+        
+        return jogos_na_maquina
+    
     def alugar_maquina(self):
         pass
 
