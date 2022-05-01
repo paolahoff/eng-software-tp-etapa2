@@ -83,7 +83,8 @@ class Maquina:
     def calcular_ganhos(self):
         self.ganhos = self.horas_em_uso * self.hora_aluguel
         self.horas_totais += self.horas_em_uso
-        self.horas_em_uso = 0
+        #self.horas_em_uso = 0
+        return self.ganhos
 
 class Jogo:
     def __init__(self):
@@ -114,6 +115,8 @@ class Jogo:
         return self
 
         
+    def listar_jogadores(self):
+        return self.__jogadores
 
     def editar(self, titulo, requisitos, valor):
         self.titulo = titulo
@@ -135,9 +138,9 @@ class Jogo:
         return
 
     def calcular_ganhos(self):
-        ganhos = round(self.tempo_jogado) * self.hora_aluguel
+        ganhos = self.tempo_jogado * self.hora_aluguel
         self.tempo_total += self.tempo_jogado
-        self.tempo_jogado = 0
+        #self.tempo_jogado = 0
         return ganhos
 
     def get_desenvolvedor(self):  # Viajei achando que ia precisar disso, mas vou deixar aqui vai que
@@ -180,6 +183,14 @@ class Conta:
     
     def pegar_creditos(self):
         return self.__creditos
+        
+    def logar(self, login, senha):
+        for conta in lista_de_contas:
+            if conta.login == login:
+                if conta.senha == senha:
+                    return True #Senha correta
+                return False #Senha incorreta
+        return False #Usuario não existe
 
 # Conta Specializations
 class ContaDesenvolvedor(Conta):
@@ -220,13 +231,9 @@ class ContaDesenvolvedor(Conta):
                 return jogo
         return None
 
-    # def calcular_ganhos(self):  # Acho que vai ser melhor fazer a busca desse jeito, por mais que seja
-    #     if self.__jogos is None:  # mais longo, pois vai ser mais fácil de guardar no banco de dados vulgo TXT
-    #         print("Nenhum jogo cadastrado")
-    #         for titulo_jogo in self.__jogos:
-    #             jogo = self.buscar_jogo_listado(titulo_jogo)
-    #             self.ganhos += jogo.calcular_ganhos()
-    #         return self.ganhos
+    def listar_jogos(self):
+        return self.__jogos
+
 
     def sacar_ganhos(self):
         creditos = self.__creditos
@@ -234,13 +241,20 @@ class ContaDesenvolvedor(Conta):
         self.zerar_creditos()
         return creditos
 
-    def atualizar_ganhos_totais(self, ganho)
+    def atualizar_ganhos_totais(self, ganho):
         self.self.ganhos_totais += ganho
         return
 
     def relatorio(self):
         pass
 
+    # def calcular_ganhos(self):  # Acho que vai ser melhor fazer a busca desse jeito, por mais que seja
+    #     if self.__jogos is None:  # mais longo, pois vai ser mais fácil de guardar no banco de dados vulgo TXT
+    #         print("Nenhum jogo cadastrado")
+    #         for titulo_jogo in self.__jogos:
+    #             jogo = self.buscar_jogo_listado(titulo_jogo)
+    #             self.ganhos += jogo.calcular_ganhos()
+    #         return self.ganhos
 
 class ContaProvedor(Conta):
     def __init__(self):
@@ -290,6 +304,27 @@ class ContaProvedor(Conta):
                 self.__maquinas = list(map(lambda x: x.replace(nome_maquina, nome_novo),
                                            self.__maquinas))  # Se o nome novo for diferente altera ele também na lista do provedor
 
+    def sacar_ganhos(self):
+        creditos = self.__creditos
+        print(f'sacado:{creditos}')
+        self.zerar_creditos()
+        return creditos
+        #creditos = self.calcular_ganhos
+        #for maquina in self.__maquinas:
+        #    maquina.zerar_ganhos()
+
+    def alterar_aluguel(self):  # Verificaremos a necessidade
+        pass
+
+    def cadastrar_jogo(self, nome_maquina, titulo):
+        for maquina in lista_de_maquinas:
+            if nome_maquina == maquina.nome:
+                maquina.baixar_jogo(titulo)
+
+    def atualizar_ganhos_totais(self, ganho):
+        self.self.ganhos_totais += ganho
+        return
+
     # def calcular_ganhos(self):
     #     if self.__maquinas is None:
     #         print("Nenhuma maquina cadastrada")
@@ -300,28 +335,6 @@ class ContaProvedor(Conta):
     #         self.ganhos += maquina.ganhos
     #     self.ganhos_totais += self.ganhos
     #     return self.ganhos
-
-    def sacar_ganhos(self):
-        #creditos = self.calcular_ganhos
-        #for maquina in self.__maquinas:
-        #    maquina.zerar_ganhos()
-        creditos = self.__creditos
-        self.zerar_creditos()
-        print(f'sacado:{creditos}')
-        return creditos
-
-    def alterar_aluguel(self):  # Verificaremos a necessidade
-        pass
-
-    def cadastrar_jogo(self, nome_maquina, titulo):
-        for maquina in lista_de_maquinas:
-            if nome_maquina == maquina.nome:
-                maquina.baixar_jogo(titulo)
-
-    def atualizar_ganhos_totais(self, ganho)
-        self.self.ganhos_totais += ganho
-        return
-
 
 
 class ContaJogador(Conta):
@@ -473,11 +486,24 @@ class Relatorio:
 class RelatorioDesenvolvedor(Relatorio):
     def __init__(self):
         super().__init__()
-
+    
+    def relatorio(self, desenvolvedor):
+        relatorio = []
+        for titulo_jogo in desenvolvedor.listar_jogos():
+            for jogo in lista_de_jogos:
+                if titulo_jogo == jogo.titulo:
+                    relatorio.append({"Titulo": jogo.titulo, "Tempo jogado" : jogo.tempo_jogado, "Tempo total" : jogo.tempo_total, "Jogadores" : jogo.listar_jogadores()})
 
 class RelatorioProvedor(Relatorio):
     def __init__(self):
         super().__init__()
+    
+    def relatorio(self, provedor):
+        relatorio = []
+        for nome_maquina in provedor.listar_maquinas():
+            for maquina in lista_de_maquinas:
+                if nome_maquina == maquina.nome:
+                    relatorio.append({"Nome" : maquina.nome, "Horas em uso" : maquina.horas_em_uso})
 
 
 def inicializar_dados():
@@ -508,6 +534,9 @@ def salvar_dados():
 if __name__ == '__main__':
     inicializar_dados()
     print(lista_de_contas[0].login)
+
+    
+    
     # conta = ContaProvedor()
     # conta.criar_conta('waldas','123')
     salvar_dados()
