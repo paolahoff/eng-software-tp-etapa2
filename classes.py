@@ -297,10 +297,14 @@ class ContaJogador(Conta):
             if maquina.nome == nome_maquina:
                 maquina_selecionada = maquina
                 break
-        for jogo in lista_de_jogos:
-            if jogo.titulo == titulo_jogo:
-                jogo_selecionado = jogo
-                break
+        if titulo_jogo in maquina_selecionada.jogos:    
+            for jogo in lista_de_jogos:
+                if jogo.titulo == titulo_jogo:
+                    jogo_selecionado = jogo
+                    break
+        if jogo_selecionado == None:
+            print ("Jogo e maquina incompativeis")
+            return None, None
         return maquina_selecionada, jogo_selecionado
 
     def gerar_aluguel(self,maquina, jogo, horas):
@@ -318,16 +322,19 @@ class ContaJogador(Conta):
         return
 
     def alugar_maquina(self, nome_maquina, titulo_jogo, horas):
-        maquina, jogo = self.definir_aluguel(nome_maquina, titulo_jogo)
-        custo_aluguel = self.gerar_aluguel(self, maquina, jogo)
-        if custo_aluguel:
-            maquina.horas_em_uso += horas
-            jogo.tempo_jogado += horas
-            self.descontar_aluguel
-            
-        else:
-            print("Creditos insuficientes")
-                    
+        maquina, jogo = self.definir_aluguel(nome_maquina, titulo_jogo) #Se não for compativel maquina e jogo serão NONE
+        if maquina == None:
+            return False  #se não deu certo o aluguel retorna FALSE pra tentar de novo
+        else:  
+            custo_aluguel = self.gerar_aluguel(self, maquina, jogo)
+            if custo_aluguel:
+                maquina.horas_em_uso += horas
+                jogo.tempo_jogado += horas
+                self.descontar_aluguel
+                return True # se deu certo retorna true
+            else:
+                print("Creditos insuficientes")
+                return False 
         pass
 
 
