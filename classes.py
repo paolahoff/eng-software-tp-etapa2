@@ -19,8 +19,8 @@ class Maquina:
         self.__porcentagem_uso = None
         self.hora_aluguel = None
         self.em_uso = False
-        self.__horas_em_uso = 0
-        self.__ganhos = 0
+        self.horas_em_uso = 0
+        self.ganhos = 0
         self.jogos = list()
 
     def zerar_ganhos(self):
@@ -290,7 +290,44 @@ class ContaJogador(Conta):
         
         return jogos_na_maquina
     
-    def alugar_maquina(self):
+    def definir_aluguel(self,nome_maquina,titulo_jogo):
+        maquina_selecionada = None
+        jogo_selecionado = None
+        for maquina in lista_de_maquinas:
+            if maquina.nome == nome_maquina:
+                maquina_selecionada = maquina
+                break
+        for jogo in lista_de_jogos:
+            if jogo.titulo == titulo_jogo:
+                jogo_selecionado = jogo
+                break
+        return maquina_selecionada, jogo_selecionado
+
+    def gerar_aluguel(self,maquina, jogo, horas):
+        creditos = self.__creditos
+        aluguel_maquina = maquina.hora_aluguel * horas
+        aluguel_jogo = 0 #NÃO LEMBRO COMO ERA PRA SER FEITO
+        aluguel_total = aluguel_jogo + aluguel_maquina
+        if creditos >= aluguel_total:
+            return aluguel_total
+        else:
+            return False
+
+    def descontar_aluguel(self, custo):
+        self.__creditos -= custo
+        return
+
+    def alugar_maquina(self, nome_maquina, titulo_jogo, horas):
+        maquina, jogo = self.definir_aluguel(nome_maquina, titulo_jogo)
+        custo_aluguel = self.gerar_aluguel(self, maquina, jogo)
+        if custo_aluguel:
+            maquina.horas_em_uso += horas
+            jogo.tempo_jogado += horas
+            self.descontar_aluguel
+            
+        else:
+            print("Creditos insuficientes")
+                    
         pass
 
 
