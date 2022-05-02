@@ -1,4 +1,5 @@
-from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox
+from PySide2.QtWidgets import QApplication, QMainWindow, QWidget, QMessageBox, QTableWidgetItem
+
 from PySide2.QtCore import QEvent, QObject
 from ui_interface import Ui_MainWindow
 import sys
@@ -30,10 +31,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # botoes jogador
         self.sairjogador.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_login))
-        # precisamos definir como vao funcionar as operacoes aqui de baixo para poder fazer o layout delas
-        self.buscar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_buscar))  # chamar a funçao de pesquisar jogo
-        self.alugar_maquina_button.clicked.connect(self.alugar_maquina)  # chamar a funçao de alugar maquina
-        self.abastecer_creditos.clicked.connect(self.a_definir)  # chamar a funçao de abastecer creditos
+        self.buscar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_buscar))
+        self.alugar_maquina_button.clicked.connect(self.alugar_maquina)
+        self.abastecer_creditos_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_abastecer_creditos))
         self.relatorio_jogador.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
 
         # botoes provedor
@@ -79,6 +79,30 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #editar jogo
         self.voltar_editar_jogo.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_lista_jogo))
         self.salvar_edit_jogo_button.clicked.connect(self.salvar_edit_jogo)
+
+        #abastecer credito
+        self.comprar_creditos_button.clicked.connect(self.abastecer_creditos)
+        self.voltar_abastecer_creditos.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
+
+        self.voltar_abastecer_creditos_2.clicked.connect(self.gerar_relatorio)
+    def abastecer_creditos(self):
+        self.conta.abastecer_creditos(self.quantidade_creditos.value())
+        msg = QMessageBox()
+        msg.setText('Compra efetuada')
+        msg.exec_()
+        return
+
+    def gerar_relatorio(self):
+        dados = [{'Nome':'jogo1','ganhos':10},{'Nome':'jogo2','ganhos':13}]
+
+        self.tableWidget_2.setRowCount(2)
+        self.tableWidget_2.setColumnCount(2)
+        self.tableWidget_2.setHorizontalHeaderLabels(list(dados[0].keys()))
+        r=0
+        for linha in dados:
+            self.tableWidget_2.setItem(r,0,QTableWidgetItem(linha['Nome']))
+            self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(linha['ganhos'])))
+            r+=1
     def alugar(self):
         if(self.conta.alugar_maquina(self.lista_maquinas_aluguel.currentText(),self.lista_jogos_alugar.currentText(), self.horas.value())):
             msg = QMessageBox()

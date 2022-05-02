@@ -17,7 +17,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(759, 569)
+        MainWindow.resize(1060, 594)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayout_47 = QHBoxLayout(self.centralwidget)
@@ -272,9 +272,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.setSpacing(30)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(-1, 0, 0, 0)
-        self.abastecer_creditos = QPushButton(self.frame_6)
-        self.abastecer_creditos.setObjectName(u"abastecer_creditos")
-        self.abastecer_creditos.setStyleSheet(u"QPushButton{\n"
+        self.abastecer_creditos_button = QPushButton(self.frame_6)
+        self.abastecer_creditos_button.setObjectName(u"abastecer_creditos_button")
+        self.abastecer_creditos_button.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 1px;\n"
 "	font-size: 16px;\n"
@@ -283,7 +283,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.horizontalLayout_6.addWidget(self.abastecer_creditos)
+        self.horizontalLayout_6.addWidget(self.abastecer_creditos_button)
 
         self.alugar_maquina_button = QPushButton(self.frame_6)
         self.alugar_maquina_button.setObjectName(u"alugar_maquina_button")
@@ -1454,47 +1454,55 @@ class Ui_MainWindow(object):
         self.frame_27.setFrameShadow(QFrame.Raised)
         self.verticalLayout_48 = QVBoxLayout(self.frame_27)
         self.verticalLayout_48.setObjectName(u"verticalLayout_48")
-        self.verticalLayout_49 = QVBoxLayout()
-        self.verticalLayout_49.setSpacing(48)
-        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.verticalLayout_32 = QVBoxLayout()
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
         self.label_19 = QLabel(self.frame_27)
         self.label_19.setObjectName(u"label_19")
         self.label_19.setStyleSheet(u"background-color: rgb(53, 53, 53);")
 
-        self.verticalLayout_49.addWidget(self.label_19)
+        self.verticalLayout_32.addWidget(self.label_19)
 
-        self.verticalLayout_50 = QVBoxLayout()
-        self.verticalLayout_50.setSpacing(30)
-        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
         self.horizontalLayout_44 = QHBoxLayout()
         self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
-        self.horizontalLayout_44.setContentsMargins(0, -1, -1, -1)
         self.novo_radio_jogo_alta = QRadioButton(self.frame_27)
         self.novo_radio_jogo_alta.setObjectName(u"novo_radio_jogo_alta")
         self.novo_radio_jogo_alta.setMaximumSize(QSize(100, 16777215))
+        self.novo_radio_jogo_alta.setStyleSheet(u"font-size: 14px;\n"
+"	")
 
         self.horizontalLayout_44.addWidget(self.novo_radio_jogo_alta)
 
         self.novo_radio_jogo_media = QRadioButton(self.frame_27)
         self.novo_radio_jogo_media.setObjectName(u"novo_radio_jogo_media")
         self.novo_radio_jogo_media.setMaximumSize(QSize(100, 16777215))
+        self.novo_radio_jogo_media.setStyleSheet(u"font-size: 14px;\n"
+"")
 
         self.horizontalLayout_44.addWidget(self.novo_radio_jogo_media)
 
         self.novo_radio_jogo_baixa = QRadioButton(self.frame_27)
         self.novo_radio_jogo_baixa.setObjectName(u"novo_radio_jogo_baixa")
         self.novo_radio_jogo_baixa.setMaximumSize(QSize(100, 16777215))
+        self.novo_radio_jogo_baixa.setStyleSheet(u"font-size: 14px;\n"
+"")
 
         self.horizontalLayout_44.addWidget(self.novo_radio_jogo_baixa)
 
 
-        self.verticalLayout_50.addLayout(self.horizontalLayout_44)
+        self.verticalLayout_32.addLayout(self.horizontalLayout_44)
 
         self.horizontalLayout_45 = QHBoxLayout()
         self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
         self.novo_titulo_input = QLineEdit(self.frame_27)
         self.novo_titulo_input.setObjectName(u"novo_titulo_input")
-        self.novo_titulo_input.setMaximumSize(QSize(400, 100))
+        sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.novo_titulo_input.sizePolicy().hasHeightForWidth())
+        self.novo_titulo_input.setSizePolicy(sizePolicy)
+        self.novo_titulo_input.setMaximumSize(QSize(400, 30))
+        self.novo_titulo_input.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"font-size: 15px;")
         self.novo_titulo_input.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_45.addWidget(self.novo_titulo_input)
@@ -1502,12 +1510,14 @@ class Ui_MainWindow(object):
         self.novo_valor_jogo = QLineEdit(self.frame_27)
         self.novo_valor_jogo.setObjectName(u"novo_valor_jogo")
         self.novo_valor_jogo.setMaximumSize(QSize(50, 16777215))
+        self.novo_valor_jogo.setStyleSheet(u"color: rgb(255, 255, 255);\n"
+"font-size: 15px;")
         self.novo_valor_jogo.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_45.addWidget(self.novo_valor_jogo)
 
 
-        self.verticalLayout_50.addLayout(self.horizontalLayout_45)
+        self.verticalLayout_32.addLayout(self.horizontalLayout_45)
 
         self.horizontalLayout_46 = QHBoxLayout()
         self.horizontalLayout_46.setObjectName(u"horizontalLayout_46")
@@ -1528,7 +1538,7 @@ class Ui_MainWindow(object):
 "	\n"
 "	background-color: rgb(45, 45, 45);\n"
 "}\n"
-"QPushButtonshover{background-color: #fff; color:black}")
+"QPushButton:hover{background-color: #51484F; color:black}")
 
         self.horizontalLayout_46.addWidget(self.salvar_edit_jogo_button)
 
@@ -1540,10 +1550,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_46.addWidget(self.pushButton_14)
 
 
-        self.verticalLayout_50.addLayout(self.horizontalLayout_46)
-
-
-        self.verticalLayout_49.addLayout(self.verticalLayout_50)
+        self.verticalLayout_32.addLayout(self.horizontalLayout_46)
 
         self.voltar_editar_jogo = QPushButton(self.frame_27)
         self.voltar_editar_jogo.setObjectName(u"voltar_editar_jogo")
@@ -1556,10 +1563,10 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.verticalLayout_49.addWidget(self.voltar_editar_jogo)
+        self.verticalLayout_32.addWidget(self.voltar_editar_jogo)
 
 
-        self.verticalLayout_48.addLayout(self.verticalLayout_49)
+        self.verticalLayout_48.addLayout(self.verticalLayout_32)
 
 
         self.horizontalLayout_48.addWidget(self.frame_27)
@@ -1568,6 +1575,128 @@ class Ui_MainWindow(object):
         self.verticalLayout_52.addWidget(self.frame_26)
 
         self.Pages.addWidget(self.pg_editar_jogo)
+        self.pg_abastecer_creditos = QWidget()
+        self.pg_abastecer_creditos.setObjectName(u"pg_abastecer_creditos")
+        self.verticalLayout_31 = QVBoxLayout(self.pg_abastecer_creditos)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.frame_28 = QFrame(self.pg_abastecer_creditos)
+        self.frame_28.setObjectName(u"frame_28")
+#if QT_CONFIG(accessibility)
+        self.frame_28.setAccessibleDescription(u"")
+#endif // QT_CONFIG(accessibility)
+        self.frame_28.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_28.setFrameShape(QFrame.StyledPanel)
+        self.frame_28.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_50 = QHBoxLayout(self.frame_28)
+        self.horizontalLayout_50.setObjectName(u"horizontalLayout_50")
+        self.frame_29 = QFrame(self.frame_28)
+        self.frame_29.setObjectName(u"frame_29")
+        self.frame_29.setEnabled(True)
+        self.frame_29.setMaximumSize(QSize(600, 300))
+        self.frame_29.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_29.setFrameShape(QFrame.StyledPanel)
+        self.frame_29.setFrameShadow(QFrame.Raised)
+        self.label_21 = QLabel(self.frame_29)
+        self.label_21.setObjectName(u"label_21")
+        self.label_21.setGeometry(QRect(140, 10, 311, 41))
+        self.label_21.setMaximumSize(QSize(16777215, 50))
+        self.label_21.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+        self.quantidade_creditos = QSpinBox(self.frame_29)
+        self.quantidade_creditos.setObjectName(u"quantidade_creditos")
+        self.quantidade_creditos.setGeometry(QRect(260, 110, 80, 35))
+        sizePolicy.setHeightForWidth(self.quantidade_creditos.sizePolicy().hasHeightForWidth())
+        self.quantidade_creditos.setSizePolicy(sizePolicy)
+        self.quantidade_creditos.setMinimumSize(QSize(80, 35))
+        font2 = QFont()
+        font2.setPointSize(17)
+        font2.setBold(False)
+        font2.setWeight(50)
+        self.quantidade_creditos.setFont(font2)
+        self.quantidade_creditos.setLayoutDirection(Qt.LeftToRight)
+        self.quantidade_creditos.setAlignment(Qt.AlignCenter)
+        self.comprar_creditos_button = QPushButton(self.frame_29)
+        self.comprar_creditos_button.setObjectName(u"comprar_creditos_button")
+        self.comprar_creditos_button.setGeometry(QRect(260, 180, 75, 23))
+        self.comprar_creditos_button.setMouseTracking(False)
+        self.comprar_creditos_button.setTabletTracking(False)
+        self.comprar_creditos_button.setAutoFillBackground(False)
+        self.comprar_creditos_button.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 10px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButton:hover{background-color: #51484F; color:black}")
+        self.comprar_creditos_button.setCheckable(False)
+        self.voltar_abastecer_creditos = QPushButton(self.frame_29)
+        self.voltar_abastecer_creditos.setObjectName(u"voltar_abastecer_creditos")
+        self.voltar_abastecer_creditos.setGeometry(QRect(260, 240, 75, 23))
+        self.voltar_abastecer_creditos.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButton:hover{background-color: #51484F; color:black}")
+
+        self.horizontalLayout_50.addWidget(self.frame_29)
+
+
+        self.verticalLayout_31.addWidget(self.frame_28)
+
+        self.Pages.addWidget(self.pg_abastecer_creditos)
+        self.page = QWidget()
+        self.page.setObjectName(u"page")
+        self.verticalLayout_28 = QVBoxLayout(self.page)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.frame_30 = QFrame(self.page)
+        self.frame_30.setObjectName(u"frame_30")
+#if QT_CONFIG(accessibility)
+        self.frame_30.setAccessibleDescription(u"")
+#endif // QT_CONFIG(accessibility)
+        self.frame_30.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_30.setFrameShape(QFrame.StyledPanel)
+        self.frame_30.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_51 = QHBoxLayout(self.frame_30)
+        self.horizontalLayout_51.setObjectName(u"horizontalLayout_51")
+        self.frame_31 = QFrame(self.frame_30)
+        self.frame_31.setObjectName(u"frame_31")
+        self.frame_31.setEnabled(True)
+        self.frame_31.setMaximumSize(QSize(600, 300))
+        self.frame_31.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_31.setFrameShape(QFrame.StyledPanel)
+        self.frame_31.setFrameShadow(QFrame.Raised)
+        self.label_22 = QLabel(self.frame_31)
+        self.label_22.setObjectName(u"label_22")
+        self.label_22.setGeometry(QRect(140, 10, 311, 41))
+        self.label_22.setMaximumSize(QSize(16777215, 50))
+        self.label_22.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+        self.voltar_abastecer_creditos_2 = QPushButton(self.frame_31)
+        self.voltar_abastecer_creditos_2.setObjectName(u"voltar_abastecer_creditos_2")
+        self.voltar_abastecer_creditos_2.setGeometry(QRect(260, 240, 75, 23))
+        self.voltar_abastecer_creditos_2.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButton:hover{background-color: #51484F; color:black}")
+        self.tableWidget_2 = QTableWidget(self.frame_31)
+        if (self.tableWidget_2.rowCount() < 3):
+            self.tableWidget_2.setRowCount(3)
+        self.tableWidget_2.setObjectName(u"tableWidget_2")
+        self.tableWidget_2.setGeometry(QRect(190, 80, 191, 141))
+        self.tableWidget_2.setRowCount(3)
+
+        self.horizontalLayout_51.addWidget(self.frame_31)
+
+
+        self.verticalLayout_28.addWidget(self.frame_30)
+
+        self.Pages.addWidget(self.page)
 
         self.horizontalLayout_47.addWidget(self.Pages)
 
@@ -1575,7 +1704,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.Pages.setCurrentIndex(9)
+        self.Pages.setCurrentIndex(0)
         self.pushButton_4.setDefault(False)
         self.pushButton_5.setDefault(False)
         self.pushButton_7.setDefault(False)
@@ -1602,7 +1731,7 @@ class Ui_MainWindow(object):
         self.voltar_cadastro_button.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
         self.create_account_button.setText(QCoreApplication.translate("MainWindow", u"Create Account", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Jogador</span></p></body></html>", None))
-        self.abastecer_creditos.setText(QCoreApplication.translate("MainWindow", u"Abastecer Creditos", None))
+        self.abastecer_creditos_button.setText(QCoreApplication.translate("MainWindow", u"Abastecer Creditos", None))
         self.alugar_maquina_button.setText(QCoreApplication.translate("MainWindow", u"Alugar Maquina", None))
         self.buscar.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
@@ -1688,5 +1817,10 @@ class Ui_MainWindow(object):
         self.salvar_edit_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
         self.pushButton_14.setText("")
         self.voltar_editar_jogo.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.label_21.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Abastecer Creditos</span></p></body></html>", None))
+        self.comprar_creditos_button.setText(QCoreApplication.translate("MainWindow", u"Comprar", None))
+        self.voltar_abastecer_creditos.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.label_22.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Relatorios</span></p></body></html>", None))
+        self.voltar_abastecer_creditos_2.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
     # retranslateUi
 
