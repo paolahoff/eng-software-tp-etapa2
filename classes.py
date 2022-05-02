@@ -199,10 +199,20 @@ class ContaDesenvolvedor(Conta):
         self.ganhos = 0
         self.ganhos_totais = 0
 
+    def verificar_jogo_duplicado(self,titulo):
+        for jogo in lista_de_jogos:
+            if jogo.titulo == titulo:
+                return True
+        return False
+
     def cadastrar_jogo(self, titulo, requisitos, valor):
         novo_jogo = Jogo()
-        novo_jogo.cadastrar(titulo, requisitos, valor, self.login)
-        self.__jogos.append(novo_jogo)
+        if not self.verificar_jogo_duplicado(titulo):
+            novo_jogo.cadastrar(titulo, requisitos, valor, self.login)
+            self.__jogos.append(novo_jogo)
+            return True
+        else:
+            return False
         pass
 
     def editar_jogo(self, titulo, requisitos, valor):
@@ -269,11 +279,22 @@ class ContaProvedor(Conta):
         self.tipo_da_conta = 'provedor'
         self.ganhos_totais = 0
 
+    def verificar_maquina_duplicada(self, nome):
+        for maquina in lista_de_maquinas:
+            if maquina.nome == nome:
+                return True
+        return False
+
     def cadastrar_maquina(self, especificacao, porcentagem, nome):
         especificacoes = especificacao
         porcentagem_uso = porcentagem
-        maquina = Maquina().criar_maquina(especificacoes, porcentagem_uso, nome, self.login)
-        self.__maquinas.append(maquina.nome)
+        if not self.verificar_maquina_duplicada(nome):          
+            maquina = Maquina().criar_maquina(especificacoes, porcentagem_uso, nome, self.login)
+            self.__maquinas.append(maquina.nome)
+            return True
+        else:    
+            return False
+        
 
     def listar_maquinas(self):
         return self.__maquinas
@@ -343,10 +364,15 @@ class ContaJogador(Conta):
         super().__init__()
         self.horas_jogadas = 0
         self.tipo_da_conta = 'jogador'
+        self.__creditos_totais = 0
 
     def abastecer_creditos(self, creditos):
+        self.__creditos_totais += creditos
         self.adicionar_creditos(creditos)
         return
+
+    def get_creditos_totais(self):
+        return self.__creditos_totais
 
     def buscar_maquinas_com_jogo(self, titulo):
         maquinas_com_jogo = []
@@ -493,7 +519,10 @@ class RelatorioDesenvolvedor(Relatorio):
         for titulo_jogo in desenvolvedor.listar_jogos():
             for jogo in lista_de_jogos:
                 if titulo_jogo == jogo.titulo:
-                    relatorio.append({"Titulo": jogo.titulo, "Tempo jogado" : jogo.tempo_jogado, "Tempo total" : jogo.tempo_total, "Jogadores" : jogo.listar_jogadores()})
+                    relatorio.append({"Titulo": jogo.titulo, 
+                                    "Tempo jogado" : jogo.tempo_jogado, 
+                                    "Tempo total" : jogo.tempo_total, 
+                                    "Jogadores" : jogo.listar_jogadores()})
 
 class RelatorioProvedor(Relatorio):
     def __init__(self):
@@ -504,7 +533,10 @@ class RelatorioProvedor(Relatorio):
         for nome_maquina in provedor.listar_maquinas():
             for maquina in lista_de_maquinas:
                 if nome_maquina == maquina.nome:
-                    relatorio.append({"Nome" : maquina.nome, "Horas em uso" : maquina.horas_em_uso})
+                    relatorio.append({"Nome" : maquina.nome, 
+                                    "Horas em uso" : maquina.horas_em_uso, 
+                                    "Ganhos" : maquina.calcular_ganho(), 
+                                    "Usuarios" : maquina.pegar_lista_usuario})
 
 
 def inicializar_dados():
