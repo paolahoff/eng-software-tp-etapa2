@@ -71,6 +71,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # alugar maquina
         self.lista_jogos_alugar.currentTextChanged.connect(self.alterar_maquinas_disponiveis)
         self.voltar_alugar_maquina_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
+        self.horas.valueChanged.connect(self.alterar_horas)
         self.alugar_button.clicked.connect(self.alugar)
 
         # cadastrar Jogo
@@ -90,6 +91,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # relatorio
         self.voltar_relatorio_button.clicked.connect(self.voltar_relatorio)
+    def alterar_horas(self):
+        horas = self.horas.value()
+        maquina, jogo = self.conta.definir_aluguel(self.lista_maquinas_aluguel.currentText(), self.lista_jogos_alugar.currentText())
+        aluguel_maquina = maquina.hora_aluguel * horas
+        aluguel_jogo = jogo.hora_aluguel * horas
+        aluguel_total = aluguel_jogo + aluguel_maquina
+        self.valor_final.setText(str(aluguel_total))
     def new_account(self):
         self.reset_inputs()
         self.Pages.setCurrentWidget(self.pg_cadastro)
@@ -262,6 +270,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.password_input.clear()
         self.password_input_2.clear()
         self.username_input_2.clear()
+        self.valor_final.clear()
 
         pass
     def salvar_edit_maquina(self):

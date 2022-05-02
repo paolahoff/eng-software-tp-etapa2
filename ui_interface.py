@@ -1393,13 +1393,43 @@ class Ui_MainWindow(object):
         self.horas.setWrapping(False)
         self.horas.setFrame(True)
         self.horas.setAlignment(Qt.AlignCenter)
-        self.horas.setMinimum(1)
+        self.horas.setMinimum(0)
         self.horas.setMaximum(5)
+        self.horas.setValue(0)
 
         self.horizontalLayout_38.addWidget(self.horas)
 
 
         self.verticalLayout_20.addLayout(self.horizontalLayout_38)
+
+        self.horizontalLayout_45 = QHBoxLayout()
+        self.horizontalLayout_45.setSpacing(6)
+        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
+        self.horizontalLayout_45.setContentsMargins(-1, -1, 70, -1)
+        self.label_24 = QLabel(self.frame_35)
+        self.label_24.setObjectName(u"label_24")
+        self.label_24.setMaximumSize(QSize(150, 16777215))
+        font3 = QFont()
+        font3.setPointSize(11)
+        self.label_24.setFont(font3)
+        self.label_24.setLayoutDirection(Qt.LeftToRight)
+        self.label_24.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_45.addWidget(self.label_24)
+
+        self.valor_final = QLabel(self.frame_35)
+        self.valor_final.setObjectName(u"valor_final")
+        self.valor_final.setMinimumSize(QSize(50, 0))
+        self.valor_final.setMaximumSize(QSize(60, 30))
+        self.valor_final.setFont(font3)
+        self.valor_final.setFrameShape(QFrame.Box)
+        self.valor_final.setTextFormat(Qt.PlainText)
+        self.valor_final.setWordWrap(False)
+
+        self.horizontalLayout_45.addWidget(self.valor_final)
+
+
+        self.verticalLayout_20.addLayout(self.horizontalLayout_45)
 
         self.horizontalLayout_37 = QHBoxLayout()
         self.horizontalLayout_37.setObjectName(u"horizontalLayout_37")
@@ -1965,11 +1995,11 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.quantidade_creditos.sizePolicy().hasHeightForWidth())
         self.quantidade_creditos.setSizePolicy(sizePolicy)
         self.quantidade_creditos.setMinimumSize(QSize(150, 35))
-        font3 = QFont()
-        font3.setPointSize(17)
-        font3.setBold(False)
-        font3.setWeight(50)
-        self.quantidade_creditos.setFont(font3)
+        font4 = QFont()
+        font4.setPointSize(17)
+        font4.setBold(False)
+        font4.setWeight(50)
+        self.quantidade_creditos.setFont(font4)
         self.quantidade_creditos.setLayoutDirection(Qt.LeftToRight)
         self.quantidade_creditos.setAlignment(Qt.AlignCenter)
 
@@ -2170,6 +2200,8 @@ class Ui_MainWindow(object):
         self.label_14.setText(QCoreApplication.translate("MainWindow", u"Selecione o jogo:", None))
         self.label_15.setText(QCoreApplication.translate("MainWindow", u"Selecione a maquina:", None))
         self.label_20.setText(QCoreApplication.translate("MainWindow", u"Quantidade de horas:", None))
+        self.label_24.setText(QCoreApplication.translate("MainWindow", u"Valor:", None))
+        self.valor_final.setText(QCoreApplication.translate("MainWindow", u"0", None))
         self.pushButton.setText("")
         self.alugar_button.setText(QCoreApplication.translate("MainWindow", u"Alugar", None))
         self.pushButton_2.setText("")
