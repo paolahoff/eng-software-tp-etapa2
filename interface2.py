@@ -23,68 +23,119 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         # botoes da pagina de login
         self.login_button.clicked.connect(self.logar)
-        self.new_account_button_2.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastro))
+        self.new_account_button_2.clicked.connect(self.new_account)
 
         # botoes cadastro conta
-        self.voltar_cadastro_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_login))
+        self.voltar_cadastro_button.clicked.connect(self.voltar_cadastro)
         self.create_account_button.clicked.connect(self.criar_conta)
 
         # botoes jogador
-        self.sairjogador.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_login))
-        self.buscar.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_buscar))
+        self.sairjogador_button.clicked.connect(self.sair )
+        self.buscar_button.clicked.connect(self.buscar)
         self.alugar_maquina_button.clicked.connect(self.alugar_maquina)
         self.abastecer_creditos_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_abastecer_creditos))
-        self.relatorio_jogador.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
+        self.relatorio_jogador_button.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
 
         # botoes provedor
-        self.sairprovedor.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_login))
-        self.cadastrar_maquina.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastro_maquina))
+        self.sairprovedor_button.clicked.connect(self.sair)
+        self.cadastrar_maquina_button.clicked.connect(self.cadastrar_maquina)
         self.listar_maquinas_button.clicked.connect(self.listar_maquinas)
-        self.relatorio_provedor.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
-        self.sacar.clicked.connect(self.a_definir)  # sacar vai ser só um popup de quanto ele sacou?
+        self.relatorio_provedor_button.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
+        self.sacar_button.clicked.connect(self.a_definir)  # sacar vai ser só um popup de quanto ele sacou?
 
         # botoes desenvolvedor
-        self.sairdesenvolvedor.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_login))
-        self.cadastrar_jogo.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_cadastro_jogo))
-        self.listar_jogos.clicked.connect(self.listar_jogos_desenvolvedor)
-        self.relatorio_desenvolvedor.clicked.connect(self.a_definir())
+        self.sairdesenvolvedor_button.clicked.connect(self.sair)
+        self.cadastrar_jogo_button.clicked.connect(self.cadastrar_jogo)
+        self.listar_jogos_button.clicked.connect(self.listar_jogos_desenvolvedor)
+        self.relatorio_desenvolvedor_button.clicked.connect(self.a_definir())
 
         # botoes cadastro maquina
-        self.voltar_cadastrar_maquina.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_provedor))
+        self.voltar_cadastrar_maquina_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_provedor))
         self.cadastrar_button.clicked.connect(self.cadastro_maquina)
 
         # lista de maquinas
-        self.voltar_lista_maquinas.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_provedor))
+        self.voltar_lista_maquinas_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_provedor))
         self.excluir_maquina_button.clicked.connect(self.excluir_maquina)
         self.editar_maquina_button.clicked.connect(self.editar_maquina)
 
         # editar maquina
-        self.voltar_edit.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_listaMaquinas))
+        self.voltar_edit_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_listaMaquinas))
         self.adicionar_jogo_button.clicked.connect(self.adicionar_jogo)
         self.salvar_edit_maquina_button.clicked.connect(self.salvar_edit_maquina)
         # buscar
-        self.voltar_busca.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
+        self.voltar_busca_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
+        self.busca_lista_maquina_button.clicked.connect(self.tabela_maquinas_com_o_jogo)
+        self.busca_lista_jogos_button.clicked.connect(self.tabela_jogos_da_maquina)
+
         # alugar maquina
         self.lista_jogos_alugar.currentTextChanged.connect(self.alterar_maquinas_disponiveis)
-        self.voltar_alugar_maquina.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
+        self.voltar_alugar_maquina_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
         self.alugar_button.clicked.connect(self.alugar)
 
         # cadastrar Jogo
-        self.voltar_cadastrar_jogo.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_desenvolvedor))
+        self.voltar_cadastrar_jogo_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_desenvolvedor))
         self.cadastrar_jogo_button.clicked.connect(self.cadastro_jogo)
         # lista de jogos
-        self.voltar_lista_jogos.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_desenvolvedor))
+        self.voltar_lista_jogos_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_desenvolvedor))
         self.excluir_jogo_button.clicked.connect(self.excluir_jogo)
         self.editar_jogo_button.clicked.connect(self.editar_jogo)
         #editar jogo
-        self.voltar_editar_jogo.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_lista_jogo))
+        self.voltar_editar_jogo_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_lista_jogo))
         self.salvar_edit_jogo_button.clicked.connect(self.salvar_edit_jogo)
 
         #abastecer credito
         self.comprar_creditos_button.clicked.connect(self.abastecer_creditos)
-        self.voltar_abastecer_creditos.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
+        self.voltar_abastecer_creditos_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
 
-        self.voltar_abastecer_creditos_2.clicked.connect(self.gerar_relatorio)
+        # relatorio
+        self.voltar_relatorio_button.clicked.connect(self.gerar_relatorio)
+    def new_account(self):
+        self.reset_inputs()
+        self.Pages.setCurrentWidget(self.pg_cadastro)
+    def voltar_cadastro(self):
+        self.reset_inputs()
+        self.Pages.setCurrentWidget(self.pg_login)
+    def cadastrar_maquina(self):
+        self.reset_inputs()
+        self.Pages.setCurrentWidget(self.pg_cadastro_maquina)
+    def cadastrar_jogo(self):
+        self.reset_inputs()
+        self.Pages.setCurrentWidget(self.pg_cadastro_jogo)
+    def sair(self):
+        self.reset_inputs()
+        self.Pages.setCurrentWidget(self.pg_login)
+
+    def buscar(self):
+        self.lista_de_jogos.clear()
+        for jogo in classes.lista_de_jogos:
+            self.lista_de_jogos.addItem(jogo.titulo)
+        self.lista_de_maquinas.clear()
+        for maquina in classes.lista_de_maquinas:
+            self.lista_de_maquinas.addItem(maquina.nome)
+        self.tableWidget.clear()
+        self.Pages.setCurrentWidget(self.pg_buscar)
+
+    def tabela_maquinas_com_o_jogo(self):
+        nome_jogo=self.lista_de_jogos.currentText()
+        lista = self.conta.buscar_maquinas_com_jogo(nome_jogo)
+        mapa = self.conta.gerar_tabela_maquinas(lista)
+        self.tableWidget.setRowCount(len(mapa))
+        self.tableWidget.setColumnCount(1)
+        self.tableWidget.setHorizontalHeaderLabels(['Maquinas'])
+        r = 0
+        for x in lista:
+            self.tableWidget.setItem(r, 0, QTableWidgetItem(x))
+            r+=1
+    def tabela_jogos_da_maquina(self):
+        nome_maquina = self.lista_de_maquinas.currentText()
+        lista = self.conta.buscar_jogos_na_maquina(nome_maquina)
+        self.tableWidget.setRowCount(len(lista))
+        self.tableWidget.setColumnCount(1)
+        self.tableWidget.setHorizontalHeaderLabels(['Jogos'])
+        r = 0
+        for x in lista:
+            self.tableWidget.setItem(r, 0, QTableWidgetItem(x))
+            r += 1
     def abastecer_creditos(self):
         self.conta.abastecer_creditos(self.quantidade_creditos.value())
         msg = QMessageBox()
@@ -93,7 +144,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return
 
     def gerar_relatorio(self):
-        dados = [{'Nome':'jogo1','ganhos':10},{'Nome':'jogo2','ganhos':13}]
 
         self.tableWidget_2.setRowCount(2)
         self.tableWidget_2.setColumnCount(2)
@@ -114,6 +164,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             msg.setText('Creditos Insuficientes')
             msg.exec_()
     def alugar_maquina(self):
+        self.lista_jogos_alugar.clear()
         for jogo in classes.lista_de_jogos:
             self.lista_jogos_alugar.addItem(jogo.titulo)
         self.Pages.setCurrentWidget(self.pg_alugar_maquina)
@@ -129,21 +180,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             msg.setText('Selecione uma especificacao')
             msg.exec_()
             return
-        if self.novo_titulo_input.text() != '':
-            try:
-                valor = float(self.novo_valor_jogo.text())
-            except ValueError:
-                msg = QMessageBox()
-                msg.setText('entre um valor valido')
-                msg.exec_()
-                return
-            self.conta.editar_jogo(self.nome_jogo, especificacao, valor)
-        else:
+        try:
+            valor = float(self.novo_valor_jogo.text())
+        except ValueError:
             msg = QMessageBox()
-            msg.setText('Escolha um titulo para o jogo')
+            msg.setText('entre um valor valido')
             msg.exec_()
             return
-        pass
+        self.conta.editar_jogo(self.nome_jogo, especificacao, valor)
+
+        return
+    def reset_inputs(self):
+        self.novo_valor_jogo.clear()
+        self.titulo_input.clear()
+        self.valor_jogo.clear()
+        self.nome_maquina_input.clear()
+        self.username_input.clear()
+        self.password_input.clear()
+        self.password_input_2.clear()
+        self.username_input_2.clear()
 
         pass
     def salvar_edit_maquina(self):
@@ -167,11 +222,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         pass
 
     def editar_jogo(self):
+        self.reset_inputs()
         self.nome_jogo=self.lista_jogos_desenvolvedor.currentText()
         self.Pages.setCurrentWidget(self.pg_editar_jogo)
 
     def listar_jogos_desenvolvedor(self):
         jogos = self.conta.listar_jogos()
+        self.lista_jogos_desenvolvedor.clear()
         for jogo in jogos:
             print(jogo)
             self.lista_jogos_desenvolvedor.addItem(jogo)
@@ -198,12 +255,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 msg.exec_()
                 return
             self.conta.cadastrar_jogo(self.titulo_input.text(),especificacao, valor)
+            return
         else:
             msg = QMessageBox()
             msg.setText('Escolha um titulo para o jogo')
             msg.exec_()
             return
-        pass
+
 
     def adicionar_jogo(self):
         nome_jogo = self.lista_jogos_adicionar.currentText()
@@ -239,6 +297,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def alterar_maquinas_disponiveis(self):
         jogo_nome = self.lista_jogos_alugar.currentText()
         lista = self.conta.buscar_maquinas_com_jogo(jogo_nome)
+        self.lista_maquinas_aluguel.clear()
         for item in lista:
             self.lista_maquinas_aluguel.addItem(item)
 
@@ -246,7 +305,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.Pages.setCurrentWidget(self.pg_editar)
         self.nome_maquina = self.lista_maquinas_provedor.currentText()
         self.nome_maquina_editada.setText(self.nome_maquina)
-
+        self.lista_jogos_adicionar.clear()
         for jogo in classes.lista_de_jogos:
             self.lista_jogos_adicionar.addItem(jogo.titulo)
 
@@ -255,6 +314,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lista_maquinas_provedor.removeItem(self.lista_maquinas_provedor.currentIndex())
 
     def listar_maquinas(self):
+        self.lista_maquinas_provedor.clear()
         maquinas = self.conta.listar_maquinas()
         for maquina in maquinas:
             self.lista_maquinas_provedor.addItem(maquina)
@@ -274,6 +334,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
         if self.nome_maquina_input.text() != '':
             self.conta.cadastrar_maquina(especificacao, self.porcentagem_input.value(), self.nome_maquina_input.text())
+
         else:
             msg = QMessageBox()
             msg.setText('Escolha um nome para a Maquina')
@@ -286,16 +347,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             if [self.username_input.text(), self.password_input.text()] == [conta.login, conta.senha]:
                 print(f'logado como: {self.username_input.text()}')
                 if conta.tipo_da_conta == 'jogador':
+                    self.mostrador_nome_jogador.setText(self.username_input.text())
                     self.Pages.setCurrentWidget(self.pg_jogador)
                     self.conta = conta
+
                     return
                 elif conta.tipo_da_conta == 'provedor':
+                    self.mostrador_nome_provedor.setText(self.username_input.text())
                     self.Pages.setCurrentWidget(self.pg_provedor)
                     self.conta = conta
+
                     return
                 elif conta.tipo_da_conta == 'desenvolvedor':
+                    self.mostrador_nome_desenvolvedor.setText(self.username_input.text())
                     self.Pages.setCurrentWidget(self.pg_desenvolvedor)
                     self.conta = conta
+
                     return
 
         print('login falhou, usuario ou senha incorretos')

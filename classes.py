@@ -287,6 +287,10 @@ class ContaProvedor(Conta):
         self.tipo_da_conta = 'provedor'
         self.ganhos_totais = 0
 
+    def gerar_relatorio(self):
+        relatorio=RelatorioProvedor()
+        return relatorio.relatorio_provedor(self)
+
     def verificar_maquina_duplicada(self, nome):
         for maquina in lista_de_maquinas:
             if maquina.nome == nome:
@@ -547,7 +551,7 @@ class RelatorioDesenvolvedor(Relatorio):
     def __init__(self):
         super().__init__()
     
-    def relatorio(self, desenvolvedor):
+    def relatorio_desenvolvedor(self, desenvolvedor):
         relatorio = []
         for titulo_jogo in desenvolvedor.listar_jogos():
             for jogo in lista_de_jogos:
@@ -561,7 +565,7 @@ class RelatorioProvedor(Relatorio):
     def __init__(self):
         super().__init__()
     
-    def relatorio(self, provedor):
+    def relatorio_provedor(self, provedor):
         relatorio = []
         for nome_maquina in provedor.listar_maquinas():
             for maquina in lista_de_maquinas:
