@@ -211,6 +211,9 @@ class ContaDesenvolvedor(Conta):
         for jogo in self.__jogos:
             if jogo.titulo == titulo:
                 jogo.editar(titulo_novo, requisitos, valor)
+                if titulo_novo is not titulo:
+                    self.__jogos = list(map(lambda x: x.replace(titulo, titulo_novo),self.__jogos))
+
         pass
 
     def remover_jogo(self, titulo):
@@ -218,6 +221,7 @@ class ContaDesenvolvedor(Conta):
             self.__jogos.remove(titulo)
             jogo_listado = self.buscar_jogo_listado(titulo)
             lista_de_jogos.remove(jogo_listado)
+            
             return True
         else:
             return False
@@ -305,8 +309,7 @@ class ContaProvedor(Conta):
             maquina = self.buscar_maquina_listada(nome_maquina)
             maquina.editar(nome_novo, especificacoes, porcentagem_uso)
             if nome_novo is not nome_maquina:
-                self.__maquinas = list(map(lambda x: x.replace(nome_maquina, nome_novo),
-                                           self.__maquinas))  # Se o nome novo for diferente altera ele também na lista do provedor
+                self.__maquinas = list(map(lambda x: x.replace(nome_maquina, nome_novo),self.__maquinas))  # Se o nome novo for diferente altera ele também na lista do provedor
 
     def sacar_ganhos(self):
         creditos = self.__creditos
