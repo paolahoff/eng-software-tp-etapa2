@@ -30,8 +30,7 @@ class Maquina:
         self.__ganhos = 0
         return
 
-    def editar(self, nome, especificacoes, porcentagem_uso):
-        self.nome = nome
+    def editar(self, especificacoes, porcentagem_uso):
         self.__especificacoes = especificacoes
         self.__porcentagem_uso = porcentagem_uso
         return
@@ -118,8 +117,7 @@ class Jogo:
     def listar_jogadores(self):
         return self.__jogadores
 
-    def editar(self, titulo, requisitos, valor):
-        self.titulo = titulo
+    def editar(self, requisitos, valor):
         self.__requisitos = requisitos
         self.__valor = valor
 
@@ -207,12 +205,10 @@ class ContaDesenvolvedor(Conta):
         self.__jogos.append(novo_jogo)
         pass
 
-    def editar_jogo(self, titulo, titulo_novo, requisitos, valor):
+    def editar_jogo(self, titulo, requisitos, valor):
         for jogo in self.__jogos:
             if jogo.titulo == titulo:
-                jogo.editar(titulo_novo, requisitos, valor)
-                if titulo_novo is not titulo:
-                    self.__jogos = list(map(lambda x: x.replace(titulo, titulo_novo),self.__jogos))
+                jogo.editar(requisitos, valor)
 
         pass
 
@@ -304,13 +300,11 @@ class ContaProvedor(Conta):
         else:
             return False
 
-    def editar_maquina(self, nome_maquina, nome_novo, especificacoes, porcentagem_uso):
+    def editar_maquina(self, nome_maquina, especificacoes, porcentagem_uso):
         if self.buscar_maquina(nome_maquina):
             maquina = self.buscar_maquina_listada(nome_maquina)
-            maquina.editar(nome_novo, especificacoes, porcentagem_uso)
-            if nome_novo is not nome_maquina:
-                self.__maquinas = list(map(lambda x: x.replace(nome_maquina, nome_novo),self.__maquinas))  # Se o nome novo for diferente altera ele também na lista do provedor
-
+            maquina.editar(especificacoes, porcentagem_uso)
+            
     def sacar_ganhos(self):
         creditos = self.__creditos
         print(f'sacado:{creditos}')
