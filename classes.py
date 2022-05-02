@@ -533,6 +533,7 @@ class RelatorioDesenvolvedor(Relatorio):
                                     "Tempo jogado" : jogo.tempo_jogado,
                                     "Tempo total" : jogo.tempo_total,
                                     "Jogadores" : jogo.listar_jogadores()})
+        return relatorio
 
 class RelatorioProvedor(Relatorio):
     def __init__(self):
@@ -547,6 +548,7 @@ class RelatorioProvedor(Relatorio):
                                     "Horas em uso" : maquina.horas_em_uso,
                                     "Ganhos" : maquina.calcular_ganho(),
                                     "Usuarios" : maquina.pegar_lista_usuario})
+        return relatorio
 
 class RelatorioJogador(Relatorio):
     def __init__(self):
@@ -558,6 +560,7 @@ class RelatorioJogador(Relatorio):
                         "Creditos totais" : jogador.get_creditos_totais(),
                         "Saldo de creditos" : jogador.pegar_creditos(),
                         "Horas jogadas" : jogador.horas_jogadas})
+        return relatorio
 
 def inicializar_dados():
     with open('dados/contas', 'rb') as arquivo_contas:
