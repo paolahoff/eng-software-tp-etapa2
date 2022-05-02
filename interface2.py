@@ -46,7 +46,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # botoes desenvolvedor
         self.sairdesenvolvedor_button.clicked.connect(self.sair)
         self.sacar_desenvolvedor_button.clicked.connect(self.sacar)
-        self.cadastrar_jogo_button.clicked.connect(self.cadastrar_jogo)
+        self.cadastrar_jogo_button_2.clicked.connect(self.cadastrar_jogo)
         self.listar_jogos_button.clicked.connect(self.listar_jogos_desenvolvedor)
         self.relatorio_desenvolvedor_button.clicked.connect(self.gerar_relatorio)
 
@@ -160,9 +160,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def gerar_relatorio(self):
         if self.conta.tipo_da_conta == 'jogador':
             relatorio = self.conta.gerar_relatorio()
-            print(relatorio)
-            self.tableWidget_2.setRowCount(len(relatorio))
-            self.tableWidget_2.setColumnCount(len(relatorio[0]))
+            q_linhas = len(relatorio)
+            if q_linhas == 0:
+                self.Pages.setCurrentWidget(self.pg_relatorio)
+                return
+            else:
+                q_colunas = len(relatorio[0])
+            self.tableWidget_2.setRowCount(q_linhas)
+            self.tableWidget_2.setColumnCount(q_colunas)
             self.tableWidget_2.setHorizontalHeaderLabels(list(relatorio[0].keys()))
             r = 0
             for x in relatorio:
@@ -174,28 +179,40 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         elif self.conta.tipo_da_conta == 'desenvolvedor':
             relatorio = self.conta.gerar_relatorio()
-            self.tableWidget_2.setRowCount(len(relatorio))
-            self.tableWidget_2.setColumnCount(len(relatorio[0]))
+            q_linhas = len(relatorio)
+            if q_linhas == 0:
+                self.Pages.setCurrentWidget(self.pg_relatorio)
+                return
+            else:
+                q_colunas = len(relatorio[0])
+            self.tableWidget_2.setRowCount(q_linhas)
+            self.tableWidget_2.setColumnCount(q_colunas)
             self.tableWidget_2.setHorizontalHeaderLabels(list(relatorio[0].keys()))
             r = 0
             for x in relatorio:
                 self.tableWidget_2.setItem(r, 0, QTableWidgetItem(x['Titulo']))
                 self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(x['Tempo jogado'])))
                 self.tableWidget_2.setItem(r, 2, QTableWidgetItem(str(x['Tempo total'])))
-                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(x['Jogadores']))
+                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(str(x['Jogadores'])))
                 r += 1
 
         elif self.conta.tipo_da_conta == 'provedor':
             relatorio = self.conta.gerar_relatorio()
-            self.tableWidget_2.setRowCount(len(relatorio))
-            self.tableWidget_2.setColumnCount(len(relatorio[0]))
+            q_linhas = len(relatorio)
+            if q_linhas == 0:
+                self.Pages.setCurrentWidget(self.pg_relatorio)
+                return
+            else:
+                q_colunas = len(relatorio[0])
+            self.tableWidget_2.setRowCount(q_linhas)
+            self.tableWidget_2.setColumnCount(q_colunas)
             self.tableWidget_2.setHorizontalHeaderLabels(list(relatorio[0].keys()))
             r = 0
             for x in relatorio:
-                self.tableWidget_2.setItem(r, 0, QTableWidgetItem(x['Titulo']))
+                self.tableWidget_2.setItem(r, 0, QTableWidgetItem(x['Nome']))
                 self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(x['Horas em uso'])))
                 self.tableWidget_2.setItem(r, 2, QTableWidgetItem(str(x['Ganhos'])))
-                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(x['Usuarios']))
+                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(str(x['Usuarios'])))
                 r += 1
         self.Pages.setCurrentWidget(self.pg_relatorio)
         return
@@ -417,43 +434,50 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def criar_conta(self):
 
         username = self.username_input_2.text()
-        if username in [conta.login for conta in classes.lista_de_contas]:
+        senha = self.password_input_2.text()
+        if username == '' or senha == '':
             msg = QMessageBox()
-            msg.setText('Nome de usuario ja usado')
+            msg.setText('Digite um nome de usuario e senha')
             msg.exec_()
             return
-
         else:
-            senha = self.password_input_2.text()
-            if self.radio_jogador.isChecked():
-                classes.ContaJogador().criar_conta(username, senha)
-                self.password_input_2.setText('')
-                self.username_input_2.setText('')
+            if username in [conta.login for conta in classes.lista_de_contas]:
                 msg = QMessageBox()
-                msg.setText('Conta criada')
-                msg.exec_()
-                self.Pages.setCurrentWidget(self.pg_login)
-            elif self.radio_provedor.isChecked():
-                classes.ContaProvedor().criar_conta(username, senha)
-                self.password_input_2.setText('')
-                self.username_input_2.setText('')
-                msg = QMessageBox()
-                msg.setText('Conta criada')
-                msg.exec_()
-                self.Pages.setCurrentWidget(self.pg_login)
-            elif self.radio_desenvolvedor.isChecked():
-                classes.ContaDesenvolvedor().criar_conta(username, senha)
-                self.password_input_2.setText('')
-                self.username_input_2.setText('')
-                msg = QMessageBox()
-                msg.setText('Conta criada')
-                msg.exec_()
-                self.Pages.setCurrentWidget(self.pg_login)
-            else:
-                msg = QMessageBox()
-                msg.setText('Selecione um tipo de conta')
+                msg.setText('Nome de usuario ja usado')
                 msg.exec_()
                 return
+
+            else:
+
+                if self.radio_jogador.isChecked():
+                    classes.ContaJogador().criar_conta(username, senha)
+                    self.password_input_2.setText('')
+                    self.username_input_2.setText('')
+                    msg = QMessageBox()
+                    msg.setText('Conta criada')
+                    msg.exec_()
+                    self.Pages.setCurrentWidget(self.pg_login)
+                elif self.radio_provedor.isChecked():
+                    classes.ContaProvedor().criar_conta(username, senha)
+                    self.password_input_2.setText('')
+                    self.username_input_2.setText('')
+                    msg = QMessageBox()
+                    msg.setText('Conta criada')
+                    msg.exec_()
+                    self.Pages.setCurrentWidget(self.pg_login)
+                elif self.radio_desenvolvedor.isChecked():
+                    classes.ContaDesenvolvedor().criar_conta(username, senha)
+                    self.password_input_2.setText('')
+                    self.username_input_2.setText('')
+                    msg = QMessageBox()
+                    msg.setText('Conta criada')
+                    msg.exec_()
+                    self.Pages.setCurrentWidget(self.pg_login)
+                else:
+                    msg = QMessageBox()
+                    msg.setText('Selecione um tipo de conta')
+                    msg.exec_()
+                    return
 
 
 app = QApplication(sys.argv)

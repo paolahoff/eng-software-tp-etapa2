@@ -70,6 +70,7 @@ class Maquina:
                 return True
         
     def pegar_lista_usuarios(self):
+        print('aaaaaaaaaaaaa')
         return self.__lista_usuarios
     
     def usuario_na_lista(self, nome_usuario):
@@ -207,6 +208,10 @@ class ContaDesenvolvedor(Conta):
         self.ganhos = 0
         self.ganhos_totais = 0
 
+    def gerar_relatorio(self):
+        relatorio=RelatorioDesenvolvedor()
+        return relatorio.relatorio_desenvolvedor(self)
+
     def verificar_jogo_duplicado(self,titulo):
         for jogo in lista_de_jogos:
             if jogo.titulo == titulo:
@@ -239,7 +244,6 @@ class ContaDesenvolvedor(Conta):
             return True
         else:
             return False
-
 
     def buscar_jogo(self, titulo):
         for jogo in self.__jogos:
@@ -552,8 +556,8 @@ class RelatorioProvedor(Relatorio):
                 if nome_maquina == maquina.nome:
                     relatorio.append({"Nome" : maquina.nome,
                                     "Horas em uso" : maquina.horas_em_uso,
-                                    "Ganhos" : maquina.calcular_ganho(),
-                                    "Usuarios" : maquina.pegar_lista_usuario})
+                                    "Ganhos" : maquina.calcular_ganhos(),
+                                    "Usuarios" : maquina.pegar_lista_usuarios()})
         return relatorio
 
 class RelatorioJogador(Relatorio):
