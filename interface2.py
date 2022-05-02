@@ -34,20 +34,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.buscar_button.clicked.connect(self.buscar)
         self.alugar_maquina_button.clicked.connect(self.alugar_maquina)
         self.abastecer_creditos_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_abastecer_creditos))
-        self.relatorio_jogador_button.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
+        self.relatorio_jogador_button.clicked.connect(self.gerar_relatorio)  # chamar a funcao de relatorio
 
         # botoes provedor
         self.sairprovedor_button.clicked.connect(self.sair)
         self.cadastrar_maquina_button.clicked.connect(self.cadastrar_maquina)
         self.listar_maquinas_button.clicked.connect(self.listar_maquinas)
-        self.relatorio_provedor_button.clicked.connect(self.a_definir)  # chamar a funcao de relatorio
-        self.sacar_button.clicked.connect(self.a_definir)  # sacar vai ser só um popup de quanto ele sacou?
+        self.relatorio_provedor_button.clicked.connect(self.gerar_relatorio)  # chamar a funcao de relatorio
+        self.sacar_provedor_button.clicked.connect(self.sacar)  # sacar vai ser só um popup de quanto ele sacou?
 
         # botoes desenvolvedor
         self.sairdesenvolvedor_button.clicked.connect(self.sair)
+        self.sacar_desenvolvedor_button.clicked.connect(self.sacar)
         self.cadastrar_jogo_button.clicked.connect(self.cadastrar_jogo)
         self.listar_jogos_button.clicked.connect(self.listar_jogos_desenvolvedor)
-        self.relatorio_desenvolvedor_button.clicked.connect(self.a_definir())
+        self.relatorio_desenvolvedor_button.clicked.connect(self.gerar_relatorio)
 
         # botoes cadastro maquina
         self.voltar_cadastrar_maquina_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_provedor))
@@ -88,7 +89,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.voltar_abastecer_creditos_button.clicked.connect(lambda: self.Pages.setCurrentWidget(self.pg_jogador))
 
         # relatorio
-        self.voltar_relatorio_button.clicked.connect(self.gerar_relatorio)
+        self.voltar_relatorio_button.clicked.connect(self.voltar_relatorio)
     def new_account(self):
         self.reset_inputs()
         self.Pages.setCurrentWidget(self.pg_cadastro)
@@ -104,7 +105,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def sair(self):
         self.reset_inputs()
         self.Pages.setCurrentWidget(self.pg_login)
-
+    def voltar_relatorio(self):
+        if self.conta.tipo_da_conta == 'jogador':
+            self.Pages.setCurrentWidget(self.pg_jogador)
+        elif self.conta.tipo_da_conta == 'provedor':
+            self.Pages.setCurrentWidget(self.pg_provedor)
+        elif self.conta.tipo_da_conta == 'desenvolvedor':
+            self.Pages.setCurrentWidget(self.pg_desenvolvedor)
     def buscar(self):
         self.lista_de_jogos.clear()
         for jogo in classes.lista_de_jogos:
@@ -114,27 +121,34 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.lista_de_maquinas.addItem(maquina.nome)
         self.tableWidget.clear()
         self.Pages.setCurrentWidget(self.pg_buscar)
-
+    def sacar(self):
+        ganhos = self.conta.sacar_ganhos()
+        msg = QMessageBox()
+        msg.setText(f'Sacados:{ganhos}')
+        msg.exec_()
     def tabela_maquinas_com_o_jogo(self):
         nome_jogo=self.lista_de_jogos.currentText()
         lista = self.conta.buscar_maquinas_com_jogo(nome_jogo)
         mapa = self.conta.gerar_tabela_maquinas(lista)
         self.tableWidget.setRowCount(len(mapa))
-        self.tableWidget.setColumnCount(1)
-        self.tableWidget.setHorizontalHeaderLabels(['Maquinas'])
+        self.tableWidget.setColumnCount(len(mapa[0]))
+        self.tableWidget.setHorizontalHeaderLabels(list(mapa[0].keys()))
         r = 0
-        for x in lista:
-            self.tableWidget.setItem(r, 0, QTableWidgetItem(x))
+        for x in mapa:
+            self.tableWidget.setItem(r, 0, QTableWidgetItem(x['nome']))
+            self.tableWidget.setItem(r, 1, QTableWidgetItem(x['especificacao']))
             r+=1
     def tabela_jogos_da_maquina(self):
         nome_maquina = self.lista_de_maquinas.currentText()
         lista = self.conta.buscar_jogos_na_maquina(nome_maquina)
-        self.tableWidget.setRowCount(len(lista))
-        self.tableWidget.setColumnCount(1)
-        self.tableWidget.setHorizontalHeaderLabels(['Jogos'])
+        mapa = self.conta.gerar_tabela_jogos(lista)
+        self.tableWidget.setRowCount(len(mapa))
+        self.tableWidget.setColumnCount(len(mapa[0]))
+        self.tableWidget.setHorizontalHeaderLabels(list(mapa[0].keys()))
         r = 0
-        for x in lista:
-            self.tableWidget.setItem(r, 0, QTableWidgetItem(x))
+        for x in mapa:
+            self.tableWidget.setItem(r, 0, QTableWidgetItem(x['titulo']))
+            self.tableWidget.setItem(r, 1, QTableWidgetItem(str(x['valor'])))
             r += 1
     def abastecer_creditos(self):
         self.conta.abastecer_creditos(self.quantidade_creditos.value())
@@ -144,15 +158,47 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         return
 
     def gerar_relatorio(self):
+        if self.conta.tipo_da_conta == 'jogador':
+            relatorio = self.conta.gerar_relatorio()
+            print(relatorio)
+            self.tableWidget_2.setRowCount(len(relatorio))
+            self.tableWidget_2.setColumnCount(len(relatorio[0]))
+            self.tableWidget_2.setHorizontalHeaderLabels(list(relatorio[0].keys()))
+            r = 0
+            for x in relatorio:
+                self.tableWidget_2.setItem(r, 0, QTableWidgetItem(x['Nome']))
+                self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(x['Creditos totais'])))
+                self.tableWidget_2.setItem(r, 2, QTableWidgetItem(str(x['Saldo de creditos'])))
+                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(str(x['Horas jogadas'])))
+                r += 1
 
-        self.tableWidget_2.setRowCount(2)
-        self.tableWidget_2.setColumnCount(2)
-        self.tableWidget_2.setHorizontalHeaderLabels(list(dados[0].keys()))
-        r=0
-        for linha in dados:
-            self.tableWidget_2.setItem(r,0,QTableWidgetItem(linha['Nome']))
-            self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(linha['ganhos'])))
-            r+=1
+        elif self.conta.tipo_da_conta == 'desenvolvedor':
+            relatorio = self.conta.gerar_relatorio()
+            self.tableWidget_2.setRowCount(len(relatorio))
+            self.tableWidget_2.setColumnCount(len(relatorio[0]))
+            self.tableWidget_2.setHorizontalHeaderLabels(list(relatorio[0].keys()))
+            r = 0
+            for x in relatorio:
+                self.tableWidget_2.setItem(r, 0, QTableWidgetItem(x['Titulo']))
+                self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(x['Tempo jogado'])))
+                self.tableWidget_2.setItem(r, 2, QTableWidgetItem(str(x['Tempo total'])))
+                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(x['Jogadores']))
+                r += 1
+
+        elif self.conta.tipo_da_conta == 'provedor':
+            relatorio = self.conta.gerar_relatorio()
+            self.tableWidget_2.setRowCount(len(relatorio))
+            self.tableWidget_2.setColumnCount(len(relatorio[0]))
+            self.tableWidget_2.setHorizontalHeaderLabels(list(relatorio[0].keys()))
+            r = 0
+            for x in relatorio:
+                self.tableWidget_2.setItem(r, 0, QTableWidgetItem(x['Titulo']))
+                self.tableWidget_2.setItem(r, 1, QTableWidgetItem(str(x['Horas em uso'])))
+                self.tableWidget_2.setItem(r, 2, QTableWidgetItem(str(x['Ganhos'])))
+                self.tableWidget_2.setItem(r, 3, QTableWidgetItem(x['Usuarios']))
+                r += 1
+        self.Pages.setCurrentWidget(self.pg_relatorio)
+        return
     def alugar(self):
         if(self.conta.alugar_maquina(self.lista_maquinas_aluguel.currentText(),self.lista_jogos_alugar.currentText(), self.horas.value())):
             msg = QMessageBox()

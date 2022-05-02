@@ -25,7 +25,8 @@ class Maquina:
         self.jogos = list()
         self.horas_totais = 0
         self.__provedor = None
-
+    def get_spec(self):
+        return self.__especificacoes
     def zerar_ganhos(self):
         self.__ganhos = 0
         return
@@ -107,7 +108,8 @@ class Jogo:
     def __gerar_hora_aluguel(self):
         self.hora_aluguel = self.__valor / 100
         return self.hora_aluguel
-        
+    def get_valor(self):
+        return self.__valor
     def cadastrar(self, titulo, requisitos, valor, desenvolvedor):
         self.titulo = titulo
         self.__requisitos = requisitos
@@ -160,7 +162,7 @@ class Conta:
         self.login = None
         self.senha = None
         self.__creditos = 0
-        pass
+
 
     def criar_conta(self, login, senha):
         print(self)
@@ -256,7 +258,7 @@ class ContaDesenvolvedor(Conta):
 
 
     def sacar_ganhos(self):
-        creditos = self.__creditos
+        creditos = self.pegar_creditos()
         print(f"Sacado ganhos: R$ {creditos}")
         self.zerar_creditos()
         return creditos
@@ -329,7 +331,7 @@ class ContaProvedor(Conta):
             maquina.editar(especificacoes, porcentagem_uso)
             
     def sacar_ganhos(self):
-        creditos = self.__creditos
+        creditos = self.pegar_creditos()
         print(f'sacado:{creditos}')
         self.zerar_creditos()
         return creditos
@@ -349,6 +351,10 @@ class ContaJogador(Conta):
         self.horas_jogadas = 0
         self.tipo_da_conta = 'jogador'
         self.__creditos_totais = 0
+
+    def gerar_relatorio(self):
+        relatorio=RelatorioJogador()
+        return relatorio.relatorio_jogador(self)
 
     def abastecer_creditos(self, creditos):
         self.__creditos_totais += creditos
@@ -371,7 +377,7 @@ class ContaJogador(Conta):
         for nome_maquina in maquinas_com_jogo:
             for maquina in lista_de_maquinas:
                 if nome_maquina == maquina.nome:
-                    tabela_maquinas.append({"nome" : maquina.nome, "especificacao" : maquina.especificao})
+                    tabela_maquinas.append({"nome" : maquina.nome, "especificacao" : maquina.get_spec()})
 
         return tabela_maquinas
 
@@ -388,9 +394,9 @@ class ContaJogador(Conta):
         for titulo_jogo in jogos_na_maquina:
             for jogo in lista_de_jogos:
                 if jogo.titulo == titulo_jogo:
-                    tabela_jogos.append({"titulo" : jogo.titulo, "valor" : jogo.valor})
-                    pass
-            
+                    tabela_jogos.append({"titulo" : jogo.titulo, "valor" : jogo.get_valor()})
+
+        return tabela_jogos
     def definir_aluguel(self,nome_maquina,titulo_jogo):
         maquina_ok = False
         jogo_ok = False

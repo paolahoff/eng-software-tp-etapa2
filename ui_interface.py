@@ -512,12 +512,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addWidget(self.relatorio_provedor_button)
 
-        self.sacar_button = QPushButton(self.frame_44)
-        self.sacar_button.setObjectName(u"sacar_button")
-        self.sacar_button.setMinimumSize(QSize(0, 25))
-        self.sacar_button.setMaximumSize(QSize(16777215, 25))
-        self.sacar_button.setFont(font1)
-        self.sacar_button.setStyleSheet(u"QPushButton{\n"
+        self.sacar_provedor_button = QPushButton(self.frame_44)
+        self.sacar_provedor_button.setObjectName(u"sacar_provedor_button")
+        self.sacar_provedor_button.setMinimumSize(QSize(0, 25))
+        self.sacar_provedor_button.setMaximumSize(QSize(16777215, 25))
+        self.sacar_provedor_button.setFont(font1)
+        self.sacar_provedor_button.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 10px;\n"
 "	font-size: 16px;\n"
@@ -526,7 +526,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{background-color: #787878; color:black}")
 
-        self.horizontalLayout_10.addWidget(self.sacar_button)
+        self.horizontalLayout_10.addWidget(self.sacar_provedor_button)
 
 
         self.verticalLayout_6.addLayout(self.horizontalLayout_10)
@@ -595,21 +595,21 @@ class Ui_MainWindow(object):
         self.frame_24.setFrameShadow(QFrame.Raised)
         self.verticalLayout_12 = QVBoxLayout(self.frame_24)
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
-        self.mostrardor_nome_desenvolvedor = QLabel(self.frame_24)
-        self.mostrardor_nome_desenvolvedor.setObjectName(u"mostrardor_nome_desenvolvedor")
-        self.mostrardor_nome_desenvolvedor.setMaximumSize(QSize(16777215, 30))
-        self.mostrardor_nome_desenvolvedor.setFont(font)
-        self.mostrardor_nome_desenvolvedor.setAlignment(Qt.AlignCenter)
+        self.mostrador_nome_desenvolvedor = QLabel(self.frame_24)
+        self.mostrador_nome_desenvolvedor.setObjectName(u"mostrador_nome_desenvolvedor")
+        self.mostrador_nome_desenvolvedor.setMaximumSize(QSize(16777215, 30))
+        self.mostrador_nome_desenvolvedor.setFont(font)
+        self.mostrador_nome_desenvolvedor.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_12.addWidget(self.mostrardor_nome_desenvolvedor)
+        self.verticalLayout_12.addWidget(self.mostrador_nome_desenvolvedor)
 
         self.horizontalLayout_12 = QHBoxLayout()
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.relatorio_desenvolvedor_button = QPushButton(self.frame_24)
-        self.relatorio_desenvolvedor_button.setObjectName(u"relatorio_desenvolvedor_button")
-        self.relatorio_desenvolvedor_button.setMinimumSize(QSize(0, 25))
-        self.relatorio_desenvolvedor_button.setMaximumSize(QSize(16777215, 25))
-        self.relatorio_desenvolvedor_button.setStyleSheet(u"QPushButton{\n"
+        self.cadastrar_jogo_button_2 = QPushButton(self.frame_24)
+        self.cadastrar_jogo_button_2.setObjectName(u"cadastrar_jogo_button_2")
+        self.cadastrar_jogo_button_2.setMinimumSize(QSize(0, 25))
+        self.cadastrar_jogo_button_2.setMaximumSize(QSize(16777215, 25))
+        self.cadastrar_jogo_button_2.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 10px;\n"
 "	font-size: 16px;\n"
@@ -618,7 +618,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{background-color: #787878; color:black}")
 
-        self.horizontalLayout_12.addWidget(self.relatorio_desenvolvedor_button)
+        self.horizontalLayout_12.addWidget(self.cadastrar_jogo_button_2)
 
         self.listar_jogos_button = QPushButton(self.frame_24)
         self.listar_jogos_button.setObjectName(u"listar_jogos_button")
@@ -635,11 +635,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_12.addWidget(self.listar_jogos_button)
 
-        self.cadastrar_jogo_button_2 = QPushButton(self.frame_24)
-        self.cadastrar_jogo_button_2.setObjectName(u"cadastrar_jogo_button_2")
-        self.cadastrar_jogo_button_2.setMinimumSize(QSize(0, 25))
-        self.cadastrar_jogo_button_2.setMaximumSize(QSize(16777215, 25))
-        self.cadastrar_jogo_button_2.setStyleSheet(u"QPushButton{\n"
+
+        self.verticalLayout_12.addLayout(self.horizontalLayout_12)
+
+        self.horizontalLayout_40 = QHBoxLayout()
+        self.horizontalLayout_40.setObjectName(u"horizontalLayout_40")
+        self.sacar_desenvolvedor_button = QPushButton(self.frame_24)
+        self.sacar_desenvolvedor_button.setObjectName(u"sacar_desenvolvedor_button")
+        self.sacar_desenvolvedor_button.setMinimumSize(QSize(0, 25))
+        self.sacar_desenvolvedor_button.setMaximumSize(QSize(16777215, 25))
+        self.sacar_desenvolvedor_button.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 10px;\n"
 "	font-size: 16px;\n"
@@ -648,10 +653,25 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButton:hover{background-color: #787878; color:black}")
 
-        self.horizontalLayout_12.addWidget(self.cadastrar_jogo_button_2)
+        self.horizontalLayout_40.addWidget(self.sacar_desenvolvedor_button)
+
+        self.relatorio_desenvolvedor_button = QPushButton(self.frame_24)
+        self.relatorio_desenvolvedor_button.setObjectName(u"relatorio_desenvolvedor_button")
+        self.relatorio_desenvolvedor_button.setMinimumSize(QSize(0, 25))
+        self.relatorio_desenvolvedor_button.setMaximumSize(QSize(16777215, 25))
+        self.relatorio_desenvolvedor_button.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 10px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButton:hover{background-color: #787878; color:black}")
+
+        self.horizontalLayout_40.addWidget(self.relatorio_desenvolvedor_button)
 
 
-        self.verticalLayout_12.addLayout(self.horizontalLayout_12)
+        self.verticalLayout_12.addLayout(self.horizontalLayout_40)
 
 
         self.verticalLayout_10.addWidget(self.frame_24)
@@ -2100,13 +2120,14 @@ class Ui_MainWindow(object):
         self.cadastrar_maquina_button.setText(QCoreApplication.translate("MainWindow", u"Cadastrar Maquina", None))
         self.listar_maquinas_button.setText(QCoreApplication.translate("MainWindow", u"Lista de Maquinas", None))
         self.relatorio_provedor_button.setText(QCoreApplication.translate("MainWindow", u"Relatorios", None))
-        self.sacar_button.setText(QCoreApplication.translate("MainWindow", u"Sacar", None))
+        self.sacar_provedor_button.setText(QCoreApplication.translate("MainWindow", u"Sacar", None))
         self.sairprovedor_button.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Desenvolvedor</span></p></body></html>", None))
-        self.mostrardor_nome_desenvolvedor.setText(QCoreApplication.translate("MainWindow", u"mostrador_nome_desenvolvedor", None))
-        self.relatorio_desenvolvedor_button.setText(QCoreApplication.translate("MainWindow", u"Relatorios", None))
-        self.listar_jogos_button.setText(QCoreApplication.translate("MainWindow", u"Listar Jogos", None))
+        self.mostrador_nome_desenvolvedor.setText(QCoreApplication.translate("MainWindow", u"mostrador_nome_desenvolvedor", None))
         self.cadastrar_jogo_button_2.setText(QCoreApplication.translate("MainWindow", u"Cadastrar Jogo", None))
+        self.listar_jogos_button.setText(QCoreApplication.translate("MainWindow", u"Listar Jogos", None))
+        self.sacar_desenvolvedor_button.setText(QCoreApplication.translate("MainWindow", u"Sacar", None))
+        self.relatorio_desenvolvedor_button.setText(QCoreApplication.translate("MainWindow", u"Relatorios", None))
         self.sairdesenvolvedor_button.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Cadastrar Maquina</span></p></body></html>", None))
         self.radio_alta.setText(QCoreApplication.translate("MainWindow", u"Alta", None))

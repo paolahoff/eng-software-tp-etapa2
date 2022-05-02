@@ -999,7 +999,7 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="sacar_button">
+                    <widget class="QPushButton" name="sacar_provedor_button">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1170,7 +1170,7 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_12">
                  <item>
-                  <widget class="QLabel" name="mostrardor_nome_desenvolvedor">
+                  <widget class="QLabel" name="mostrador_nome_desenvolvedor">
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
@@ -1193,7 +1193,7 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_12">
                    <item>
-                    <widget class="QPushButton" name="relatorio_desenvolvedor_button">
+                    <widget class="QPushButton" name="cadastrar_jogo_button_2">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1217,7 +1217,7 @@ QPushButton:hover{background-color: #787878; color:black}</string>
 QPushButton:hover{background-color: #787878; color:black}</string>
                      </property>
                      <property name="text">
-                      <string>Relatorios</string>
+                      <string>Cadastrar Jogo</string>
                      </property>
                     </widget>
                    </item>
@@ -1250,8 +1250,12 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                      </property>
                     </widget>
                    </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_40">
                    <item>
-                    <widget class="QPushButton" name="cadastrar_jogo_button_2">
+                    <widget class="QPushButton" name="sacar_desenvolvedor_button">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1275,7 +1279,36 @@ QPushButton:hover{background-color: #787878; color:black}</string>
 QPushButton:hover{background-color: #787878; color:black}</string>
                      </property>
                      <property name="text">
-                      <string>Cadastrar Jogo</string>
+                      <string>Sacar</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="relatorio_desenvolvedor_button">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 10px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButton:hover{background-color: #787878; color:black}</string>
+                     </property>
+                     <property name="text">
+                      <string>Relatorios</string>
                      </property>
                     </widget>
                    </item>
