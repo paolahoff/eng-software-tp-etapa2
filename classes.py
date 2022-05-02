@@ -26,8 +26,6 @@ class Maquina:
         self.horas_totais = 0
         self.__provedor = None
 
-    
-
     def zerar_ganhos(self):
         self.__ganhos = 0
         return
@@ -270,14 +268,6 @@ class ContaDesenvolvedor(Conta):
     def relatorio(self):
         pass
 
-    # def calcular_ganhos(self):  # Acho que vai ser melhor fazer a busca desse jeito, por mais que seja
-    #     if self.__jogos is None:  # mais longo, pois vai ser mais fácil de guardar no banco de dados vulgo TXT
-    #         print("Nenhum jogo cadastrado")
-    #         for titulo_jogo in self.__jogos:
-    #             jogo = self.buscar_jogo_listado(titulo_jogo)
-    #             self.ganhos += jogo.calcular_ganhos()
-    #         return self.ganhos
-
 class ContaProvedor(Conta):
     def __init__(self):
         super().__init__()
@@ -343,12 +333,6 @@ class ContaProvedor(Conta):
         print(f'sacado:{creditos}')
         self.zerar_creditos()
         return creditos
-        #creditos = self.calcular_ganhos
-        #for maquina in self.__maquinas:
-        #    maquina.zerar_ganhos()
-
-    def alterar_aluguel(self):  # Verificaremos a necessidade
-        pass
 
     def cadastrar_jogo(self, nome_maquina, titulo):
         for maquina in lista_de_maquinas:
@@ -358,18 +342,6 @@ class ContaProvedor(Conta):
     def atualizar_ganhos_totais(self, ganho):
         self.ganhos_totais += ganho
         return
-
-    # def calcular_ganhos(self):
-    #     if self.__maquinas is None:
-    #         print("Nenhuma maquina cadastrada")
-    #         return None
-
-    #     for maquina in self.__maquinas:
-    #         maquina.calcular_ganhos()
-    #         self.ganhos += maquina.ganhos
-    #     self.ganhos_totais += self.ganhos
-    #     return self.ganhos
-
 
 class ContaJogador(Conta):
     def __init__(self):
@@ -547,6 +519,7 @@ class Relatorio:
 
 
 # Relatório Specializations
+
 class RelatorioDesenvolvedor(Relatorio):
     def __init__(self):
         super().__init__()
@@ -575,6 +548,16 @@ class RelatorioProvedor(Relatorio):
                                     "Ganhos" : maquina.calcular_ganho(),
                                     "Usuarios" : maquina.pegar_lista_usuario})
 
+class RelatorioJogador(Relatorio):
+    def __init__(self):
+        super().__init__()
+    
+    def relatorio_jogador(self, jogador):
+        relatorio = []
+        relatorio.append({"Nome" : jogador.login,
+                        "Creditos totais" : jogador.get_creditos_totais(),
+                        "Saldo de creditos" : jogador.pegar_creditos(),
+                        "Horas jogadas" : jogador.horas_jogadas})
 
 def inicializar_dados():
     with open('dados/contas', 'rb') as arquivo_contas:
