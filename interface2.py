@@ -94,6 +94,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def alterar_horas(self):
         horas = self.horas.value()
         maquina, jogo = self.conta.definir_aluguel(self.lista_maquinas_aluguel.currentText(), self.lista_jogos_alugar.currentText())
+        if maquina is None :
+            self.valor_final.setText("0")
+            return
         aluguel_maquina = maquina.hora_aluguel * horas
         aluguel_jogo = jogo.hora_aluguel * horas
         aluguel_total = aluguel_jogo + aluguel_maquina
@@ -378,6 +381,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         pass
 
     def alterar_maquinas_disponiveis(self):
+        self.alterar_horas()
         jogo_nome = self.lista_jogos_alugar.currentText()
         lista = self.conta.buscar_maquinas_com_jogo(jogo_nome)
         self.lista_maquinas_aluguel.clear()
@@ -420,16 +424,21 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             msg.exec_()
             return
         if self.nome_maquina_input.text() != '':
-            self.conta.cadastrar_maquina(especificacao, self.porcentagem_input.value(), self.nome_maquina_input.text())
+            if self.conta.cadastrar_maquina(especificacao, self.porcentagem_input.value(), self.nome_maquina_input.text()):
+                msg = QMessageBox()
+                msg.setText('Maquina cadastrada')
+                msg.exec_()
+                return
+            else:
+                msg = QMessageBox()
+                msg.setText('Ja existe uma maquina com este nome')
+                msg.exec_()
+                return
         else:
             msg = QMessageBox()
             msg.setText('Escolha um nome para a Maquina')
             msg.exec_()
             return
-        msg = QMessageBox()
-        msg.setText('Maquina cadastrada')
-        msg.exec_()
-        return
 
     def logar(self):
         for conta in classes.lista_de_contas:
