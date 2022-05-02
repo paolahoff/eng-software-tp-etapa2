@@ -214,10 +214,14 @@ class ContaDesenvolvedor(Conta):
         pass
 
     def remover_jogo(self, titulo):
-        for jogo in self.__jogos:
-            if jogo.titulo == titulo:
-                self.__jogos.remove(jogo)
-        pass
+        if self.buscar_jogo(titulo):
+            self.__jogos.remove(titulo)
+            jogo_listado = self.buscar_jogo_listado(titulo)
+            lista_de_jogos.remove(jogo_listado)
+            return True
+        else:
+            return False
+
 
     def buscar_jogo(self, titulo):
         for jogo in self.__jogos:
@@ -535,7 +539,7 @@ if __name__ == '__main__':
     inicializar_dados()
     print(lista_de_contas[0].login)
 
-    
+
     
     # conta = ContaProvedor()
     # conta.criar_conta('waldas','123')
