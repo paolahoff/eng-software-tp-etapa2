@@ -17,13 +17,13 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(852, 475)
+        MainWindow.resize(759, 569)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
-        self.verticalLayout_23 = QVBoxLayout(self.centralwidget)
-        self.verticalLayout_23.setSpacing(0)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_47 = QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_47.setSpacing(0)
+        self.horizontalLayout_47.setObjectName(u"horizontalLayout_47")
+        self.horizontalLayout_47.setContentsMargins(0, 0, 0, 0)
         self.Pages = QStackedWidget(self.centralwidget)
         self.Pages.setObjectName(u"Pages")
         self.Pages.setStyleSheet(u"background-color: rgb(53, 53, 53);")
@@ -285,9 +285,9 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_6.addWidget(self.abastecer_creditos)
 
-        self.alugar_maquina = QPushButton(self.frame_6)
-        self.alugar_maquina.setObjectName(u"alugar_maquina")
-        self.alugar_maquina.setStyleSheet(u"QPushButton{\n"
+        self.alugar_maquina_button = QPushButton(self.frame_6)
+        self.alugar_maquina_button.setObjectName(u"alugar_maquina_button")
+        self.alugar_maquina_button.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 1px;\n"
 "	font-size: 16px;\n"
@@ -296,11 +296,11 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.horizontalLayout_6.addWidget(self.alugar_maquina)
+        self.horizontalLayout_6.addWidget(self.alugar_maquina_button)
 
-        self.pesquisar_jogo = QPushButton(self.frame_6)
-        self.pesquisar_jogo.setObjectName(u"pesquisar_jogo")
-        self.pesquisar_jogo.setStyleSheet(u"QPushButton{\n"
+        self.buscar = QPushButton(self.frame_6)
+        self.buscar.setObjectName(u"buscar")
+        self.buscar.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 1px;\n"
 "	font-size: 16px;\n"
@@ -309,7 +309,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.horizontalLayout_6.addWidget(self.pesquisar_jogo)
+        self.horizontalLayout_6.addWidget(self.buscar)
 
 
         self.verticalLayout.addLayout(self.horizontalLayout_6)
@@ -866,32 +866,42 @@ class Ui_MainWindow(object):
         self.frame_16.setStyleSheet(u"background-color: rgb(60, 60, 60);")
         self.frame_16.setFrameShape(QFrame.StyledPanel)
         self.frame_16.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_27 = QVBoxLayout(self.frame_16)
+        self.verticalLayout_36 = QVBoxLayout(self.frame_16)
+        self.verticalLayout_36.setObjectName(u"verticalLayout_36")
+        self.verticalLayout_27 = QVBoxLayout()
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
-        self.verticalLayout_25 = QVBoxLayout()
-        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.label_8 = QLabel(self.frame_16)
         self.label_8.setObjectName(u"label_8")
-        self.label_8.setMaximumSize(QSize(16777215, 16777215))
+        self.label_8.setMaximumSize(QSize(16777215, 40))
         self.label_8.setLayoutDirection(Qt.LeftToRight)
         self.label_8.setStyleSheet(u"background-color: rgb(53, 53, 53);")
 
-        self.verticalLayout_25.addWidget(self.label_8)
+        self.verticalLayout_27.addWidget(self.label_8)
 
         self.nome_maquina_editada = QLabel(self.frame_16)
         self.nome_maquina_editada.setObjectName(u"nome_maquina_editada")
+        font1 = QFont()
+        font1.setPointSize(12)
+        self.nome_maquina_editada.setFont(font1)
         self.nome_maquina_editada.setAlignment(Qt.AlignCenter)
 
-        self.verticalLayout_25.addWidget(self.nome_maquina_editada)
+        self.verticalLayout_27.addWidget(self.nome_maquina_editada)
 
-        self.verticalLayout_24 = QVBoxLayout()
-        self.verticalLayout_24.setSpacing(30)
-        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalLayout_25 = QVBoxLayout()
+        self.verticalLayout_25.setSpacing(50)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
         self.horizontalLayout_26 = QHBoxLayout()
         self.horizontalLayout_26.setObjectName(u"horizontalLayout_26")
-        self.Adicionar_jogo = QPushButton(self.frame_16)
-        self.Adicionar_jogo.setObjectName(u"Adicionar_jogo")
-        self.Adicionar_jogo.setStyleSheet(u"QPushButton{\n"
+        self.verticalLayout_24 = QVBoxLayout()
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.lista_jogos_adicionar = QComboBox(self.frame_16)
+        self.lista_jogos_adicionar.setObjectName(u"lista_jogos_adicionar")
+
+        self.verticalLayout_24.addWidget(self.lista_jogos_adicionar)
+
+        self.adicionar_jogo_button = QPushButton(self.frame_16)
+        self.adicionar_jogo_button.setObjectName(u"adicionar_jogo_button")
+        self.adicionar_jogo_button.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 1px;\n"
 "	font-size: 16px;\n"
@@ -900,7 +910,10 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.horizontalLayout_26.addWidget(self.Adicionar_jogo)
+        self.verticalLayout_24.addWidget(self.adicionar_jogo_button)
+
+
+        self.horizontalLayout_26.addLayout(self.verticalLayout_24)
 
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -929,9 +942,9 @@ class Ui_MainWindow(object):
 
         self.gridLayout.addLayout(self.horizontalLayout_25, 0, 0, 1, 2)
 
-        self.salvar_edit = QPushButton(self.frame_16)
-        self.salvar_edit.setObjectName(u"salvar_edit")
-        self.salvar_edit.setStyleSheet(u"QPushButton{\n"
+        self.salvar_edit_maquina_button = QPushButton(self.frame_16)
+        self.salvar_edit_maquina_button.setObjectName(u"salvar_edit_maquina_button")
+        self.salvar_edit_maquina_button.setStyleSheet(u"QPushButton{\n"
 "	color:rgb(255,255,255);\n"
 "	border-radius: 1px;\n"
 "	font-size: 16px;\n"
@@ -940,7 +953,7 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.gridLayout.addWidget(self.salvar_edit, 1, 1, 1, 1)
+        self.gridLayout.addWidget(self.salvar_edit_maquina_button, 1, 1, 1, 1)
 
         self.porcentagem_edit = QSpinBox(self.frame_16)
         self.porcentagem_edit.setObjectName(u"porcentagem_edit")
@@ -952,7 +965,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_26.addLayout(self.gridLayout)
 
 
-        self.verticalLayout_24.addLayout(self.horizontalLayout_26)
+        self.verticalLayout_25.addLayout(self.horizontalLayout_26)
 
         self.voltar_edit = QPushButton(self.frame_16)
         self.voltar_edit.setObjectName(u"voltar_edit")
@@ -965,13 +978,13 @@ class Ui_MainWindow(object):
 "}\n"
 "QPushButtonshover{background-color: #fff; color:black}")
 
-        self.verticalLayout_24.addWidget(self.voltar_edit)
-
-
-        self.verticalLayout_25.addLayout(self.verticalLayout_24)
+        self.verticalLayout_25.addWidget(self.voltar_edit)
 
 
         self.verticalLayout_27.addLayout(self.verticalLayout_25)
+
+
+        self.verticalLayout_36.addLayout(self.verticalLayout_27)
 
 
         self.horizontalLayout_13.addWidget(self.frame_16)
@@ -980,21 +993,592 @@ class Ui_MainWindow(object):
         self.verticalLayout_26.addWidget(self.frame_15)
 
         self.Pages.addWidget(self.pg_editar)
-        self.page_4 = QWidget()
-        self.page_4.setObjectName(u"page_4")
-        self.Pages.addWidget(self.page_4)
-        self.page_5 = QWidget()
-        self.page_5.setObjectName(u"page_5")
-        self.Pages.addWidget(self.page_5)
+        self.pg_buscar = QWidget()
+        self.pg_buscar.setObjectName(u"pg_buscar")
+        self.verticalLayout_34 = QVBoxLayout(self.pg_buscar)
+        self.verticalLayout_34.setSpacing(0)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.verticalLayout_34.setContentsMargins(0, 0, 0, 0)
+        self.frame_17 = QFrame(self.pg_buscar)
+        self.frame_17.setObjectName(u"frame_17")
+        self.frame_17.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_17.setFrameShape(QFrame.NoFrame)
+        self.frame_17.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_29 = QHBoxLayout(self.frame_17)
+        self.horizontalLayout_29.setSpacing(0)
+        self.horizontalLayout_29.setObjectName(u"horizontalLayout_29")
+        self.horizontalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.frame_18 = QFrame(self.frame_17)
+        self.frame_18.setObjectName(u"frame_18")
+        self.frame_18.setMaximumSize(QSize(600, 300))
+        self.frame_18.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_18.setFrameShape(QFrame.StyledPanel)
+        self.frame_18.setFrameShadow(QFrame.Raised)
+        self.busca_lista_maquina = QPushButton(self.frame_18)
+        self.busca_lista_maquina.setObjectName(u"busca_lista_maquina")
+        self.busca_lista_maquina.setGeometry(QRect(41, 214, 109, 19))
+        self.busca_lista_maquina.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+        self.lista_de_jogos = QComboBox(self.frame_18)
+        self.lista_de_jogos.setObjectName(u"lista_de_jogos")
+        self.lista_de_jogos.setGeometry(QRect(50, 140, 73, 18))
+        self.lista_de_maquinas = QComboBox(self.frame_18)
+        self.lista_de_maquinas.setObjectName(u"lista_de_maquinas")
+        self.lista_de_maquinas.setGeometry(QRect(420, 130, 73, 18))
+        self.busca_lista_jogos = QPushButton(self.frame_18)
+        self.busca_lista_jogos.setObjectName(u"busca_lista_jogos")
+        self.busca_lista_jogos.setGeometry(QRect(401, 221, 84, 19))
+        self.busca_lista_jogos.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+        self.label_11 = QLabel(self.frame_18)
+        self.label_11.setObjectName(u"label_11")
+        self.label_11.setGeometry(QRect(50, 80, 78, 16))
+        self.label_12 = QLabel(self.frame_18)
+        self.label_12.setObjectName(u"label_12")
+        self.label_12.setGeometry(QRect(400, 80, 111, 16))
+        self.tableWidget = QTableWidget(self.frame_18)
+        if (self.tableWidget.columnCount() < 2):
+            self.tableWidget.setColumnCount(2)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(170, 50, 211, 192))
+        self.label_10 = QLabel(self.frame_18)
+        self.label_10.setObjectName(u"label_10")
+        self.label_10.setGeometry(QRect(230, 0, 92, 29))
+        self.label_10.setMaximumSize(QSize(16777215, 16777215))
+        self.label_10.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+        self.voltar_busca = QPushButton(self.frame_18)
+        self.voltar_busca.setObjectName(u"voltar_busca")
+        self.voltar_busca.setGeometry(QRect(250, 270, 42, 19))
+        self.voltar_busca.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
 
-        self.verticalLayout_23.addWidget(self.Pages)
+        self.horizontalLayout_29.addWidget(self.frame_18)
+
+
+        self.verticalLayout_34.addWidget(self.frame_17)
+
+        self.Pages.addWidget(self.pg_buscar)
+        self.pg_alugar_maquina = QWidget()
+        self.pg_alugar_maquina.setObjectName(u"pg_alugar_maquina")
+        self.verticalLayout_35 = QVBoxLayout(self.pg_alugar_maquina)
+        self.verticalLayout_35.setSpacing(0)
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.verticalLayout_35.setContentsMargins(0, 0, 0, 0)
+        self.frame_19 = QFrame(self.pg_alugar_maquina)
+        self.frame_19.setObjectName(u"frame_19")
+        self.frame_19.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_19.setFrameShape(QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_30 = QHBoxLayout(self.frame_19)
+        self.horizontalLayout_30.setSpacing(0)
+        self.horizontalLayout_30.setObjectName(u"horizontalLayout_30")
+        self.horizontalLayout_30.setContentsMargins(0, 0, 0, 0)
+        self.frame_20 = QFrame(self.frame_19)
+        self.frame_20.setObjectName(u"frame_20")
+        self.frame_20.setMaximumSize(QSize(600, 300))
+        self.frame_20.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_20.setFrameShape(QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_23 = QVBoxLayout(self.frame_20)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.label_13 = QLabel(self.frame_20)
+        self.label_13.setObjectName(u"label_13")
+        self.label_13.setMaximumSize(QSize(16777215, 16777215))
+        self.label_13.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+
+        self.verticalLayout_23.addWidget(self.label_13)
+
+        self.verticalLayout_33 = QVBoxLayout()
+        self.verticalLayout_33.setSpacing(15)
+        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
+        self.verticalLayout_33.setContentsMargins(15, -1, 15, -1)
+        self.horizontalLayout_31 = QHBoxLayout()
+        self.horizontalLayout_31.setObjectName(u"horizontalLayout_31")
+        self.label_14 = QLabel(self.frame_20)
+        self.label_14.setObjectName(u"label_14")
+        self.label_14.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_31.addWidget(self.label_14)
+
+        self.lista_jogos_alugar = QComboBox(self.frame_20)
+        self.lista_jogos_alugar.setObjectName(u"lista_jogos_alugar")
+        self.lista_jogos_alugar.setMaximumSize(QSize(300, 16777215))
+
+        self.horizontalLayout_31.addWidget(self.lista_jogos_alugar)
+
+
+        self.verticalLayout_33.addLayout(self.horizontalLayout_31)
+
+        self.horizontalLayout_32 = QHBoxLayout()
+        self.horizontalLayout_32.setObjectName(u"horizontalLayout_32")
+        self.label_15 = QLabel(self.frame_20)
+        self.label_15.setObjectName(u"label_15")
+        self.label_15.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_32.addWidget(self.label_15)
+
+        self.lista_maquinas_aluguel = QComboBox(self.frame_20)
+        self.lista_maquinas_aluguel.setObjectName(u"lista_maquinas_aluguel")
+        self.lista_maquinas_aluguel.setMaximumSize(QSize(300, 16777215))
+
+        self.horizontalLayout_32.addWidget(self.lista_maquinas_aluguel)
+
+
+        self.verticalLayout_33.addLayout(self.horizontalLayout_32)
+
+
+        self.verticalLayout_23.addLayout(self.verticalLayout_33)
+
+        self.horizontalLayout_49 = QHBoxLayout()
+        self.horizontalLayout_49.setObjectName(u"horizontalLayout_49")
+        self.label_20 = QLabel(self.frame_20)
+        self.label_20.setObjectName(u"label_20")
+
+        self.horizontalLayout_49.addWidget(self.label_20)
+
+        self.horas = QSpinBox(self.frame_20)
+        self.horas.setObjectName(u"horas")
+        self.horas.setMinimum(1)
+        self.horas.setMaximum(5)
+
+        self.horizontalLayout_49.addWidget(self.horas)
+
+
+        self.verticalLayout_23.addLayout(self.horizontalLayout_49)
+
+        self.alugar_button = QPushButton(self.frame_20)
+        self.alugar_button.setObjectName(u"alugar_button")
+
+        self.verticalLayout_23.addWidget(self.alugar_button)
+
+        self.voltar_alugar_maquina = QPushButton(self.frame_20)
+        self.voltar_alugar_maquina.setObjectName(u"voltar_alugar_maquina")
+        self.voltar_alugar_maquina.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.verticalLayout_23.addWidget(self.voltar_alugar_maquina)
+
+
+        self.horizontalLayout_30.addWidget(self.frame_20)
+
+
+        self.verticalLayout_35.addWidget(self.frame_19)
+
+        self.Pages.addWidget(self.pg_alugar_maquina)
+        self.pg_cadastro_jogo = QWidget()
+        self.pg_cadastro_jogo.setObjectName(u"pg_cadastro_jogo")
+        self.verticalLayout_39 = QVBoxLayout(self.pg_cadastro_jogo)
+        self.verticalLayout_39.setSpacing(0)
+        self.verticalLayout_39.setObjectName(u"verticalLayout_39")
+        self.verticalLayout_39.setContentsMargins(0, 0, 0, 0)
+        self.frame_21 = QFrame(self.pg_cadastro_jogo)
+        self.frame_21.setObjectName(u"frame_21")
+        self.frame_21.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_21.setFrameShape(QFrame.NoFrame)
+        self.frame_21.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_33 = QHBoxLayout(self.frame_21)
+        self.horizontalLayout_33.setSpacing(0)
+        self.horizontalLayout_33.setObjectName(u"horizontalLayout_33")
+        self.horizontalLayout_33.setContentsMargins(0, 0, 0, 0)
+        self.frame_22 = QFrame(self.frame_21)
+        self.frame_22.setObjectName(u"frame_22")
+        self.frame_22.setMaximumSize(QSize(600, 300))
+        self.frame_22.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_22.setFrameShape(QFrame.StyledPanel)
+        self.frame_22.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_40 = QVBoxLayout(self.frame_22)
+        self.verticalLayout_40.setObjectName(u"verticalLayout_40")
+        self.verticalLayout_38 = QVBoxLayout()
+        self.verticalLayout_38.setSpacing(48)
+        self.verticalLayout_38.setObjectName(u"verticalLayout_38")
+        self.label_16 = QLabel(self.frame_22)
+        self.label_16.setObjectName(u"label_16")
+        self.label_16.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+
+        self.verticalLayout_38.addWidget(self.label_16)
+
+        self.verticalLayout_37 = QVBoxLayout()
+        self.verticalLayout_37.setSpacing(30)
+        self.verticalLayout_37.setObjectName(u"verticalLayout_37")
+        self.horizontalLayout_34 = QHBoxLayout()
+        self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
+        self.horizontalLayout_34.setContentsMargins(0, -1, -1, -1)
+        self.radio_jogo_alta = QRadioButton(self.frame_22)
+        self.radio_jogo_alta.setObjectName(u"radio_jogo_alta")
+        self.radio_jogo_alta.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_34.addWidget(self.radio_jogo_alta)
+
+        self.radio_jogo_media = QRadioButton(self.frame_22)
+        self.radio_jogo_media.setObjectName(u"radio_jogo_media")
+        self.radio_jogo_media.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_34.addWidget(self.radio_jogo_media)
+
+        self.radio_jogo_baixa = QRadioButton(self.frame_22)
+        self.radio_jogo_baixa.setObjectName(u"radio_jogo_baixa")
+        self.radio_jogo_baixa.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_34.addWidget(self.radio_jogo_baixa)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_34)
+
+        self.horizontalLayout_35 = QHBoxLayout()
+        self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
+        self.titulo_input = QLineEdit(self.frame_22)
+        self.titulo_input.setObjectName(u"titulo_input")
+        self.titulo_input.setMaximumSize(QSize(400, 100))
+        self.titulo_input.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_35.addWidget(self.titulo_input)
+
+        self.valor_jogo = QLineEdit(self.frame_22)
+        self.valor_jogo.setObjectName(u"valor_jogo")
+        self.valor_jogo.setMaximumSize(QSize(50, 16777215))
+        self.valor_jogo.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_35.addWidget(self.valor_jogo)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_35)
+
+        self.horizontalLayout_36 = QHBoxLayout()
+        self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
+        self.pushButton_5 = QPushButton(self.frame_22)
+        self.pushButton_5.setObjectName(u"pushButton_5")
+        self.pushButton_5.setEnabled(False)
+        self.pushButton_5.setAutoDefault(False)
+        self.pushButton_5.setFlat(True)
+
+        self.horizontalLayout_36.addWidget(self.pushButton_5)
+
+        self.cadastrar_jogo_button = QPushButton(self.frame_22)
+        self.cadastrar_jogo_button.setObjectName(u"cadastrar_jogo_button")
+        self.cadastrar_jogo_button.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.horizontalLayout_36.addWidget(self.cadastrar_jogo_button)
+
+        self.pushButton_12 = QPushButton(self.frame_22)
+        self.pushButton_12.setObjectName(u"pushButton_12")
+        self.pushButton_12.setEnabled(False)
+        self.pushButton_12.setFlat(True)
+
+        self.horizontalLayout_36.addWidget(self.pushButton_12)
+
+
+        self.verticalLayout_37.addLayout(self.horizontalLayout_36)
+
+
+        self.verticalLayout_38.addLayout(self.verticalLayout_37)
+
+        self.voltar_cadastrar_jogo = QPushButton(self.frame_22)
+        self.voltar_cadastrar_jogo.setObjectName(u"voltar_cadastrar_jogo")
+        self.voltar_cadastrar_jogo.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.verticalLayout_38.addWidget(self.voltar_cadastrar_jogo)
+
+
+        self.verticalLayout_40.addLayout(self.verticalLayout_38)
+
+
+        self.horizontalLayout_33.addWidget(self.frame_22)
+
+
+        self.verticalLayout_39.addWidget(self.frame_21)
+
+        self.Pages.addWidget(self.pg_cadastro_jogo)
+        self.pg_lista_jogo = QWidget()
+        self.pg_lista_jogo.setObjectName(u"pg_lista_jogo")
+        self.verticalLayout_47 = QVBoxLayout(self.pg_lista_jogo)
+        self.verticalLayout_47.setSpacing(0)
+        self.verticalLayout_47.setObjectName(u"verticalLayout_47")
+        self.verticalLayout_47.setContentsMargins(0, 0, 0, 0)
+        self.frame_23 = QFrame(self.pg_lista_jogo)
+        self.frame_23.setObjectName(u"frame_23")
+        self.frame_23.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_23.setFrameShape(QFrame.StyledPanel)
+        self.frame_23.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_41 = QHBoxLayout(self.frame_23)
+        self.horizontalLayout_41.setSpacing(0)
+        self.horizontalLayout_41.setObjectName(u"horizontalLayout_41")
+        self.horizontalLayout_41.setContentsMargins(0, 0, 0, 0)
+        self.frame_25 = QFrame(self.frame_23)
+        self.frame_25.setObjectName(u"frame_25")
+        self.frame_25.setMaximumSize(QSize(600, 300))
+        self.frame_25.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_25.setFrameShape(QFrame.StyledPanel)
+        self.frame_25.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_44 = QVBoxLayout(self.frame_25)
+        self.verticalLayout_44.setObjectName(u"verticalLayout_44")
+        self.verticalLayout_45 = QVBoxLayout()
+        self.verticalLayout_45.setSpacing(50)
+        self.verticalLayout_45.setObjectName(u"verticalLayout_45")
+        self.label_18 = QLabel(self.frame_25)
+        self.label_18.setObjectName(u"label_18")
+        self.label_18.setMaximumSize(QSize(16777215, 16777215))
+        self.label_18.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+
+        self.verticalLayout_45.addWidget(self.label_18)
+
+        self.horizontalLayout_42 = QHBoxLayout()
+        self.horizontalLayout_42.setObjectName(u"horizontalLayout_42")
+        self.horizontalLayout_43 = QHBoxLayout()
+        self.horizontalLayout_43.setObjectName(u"horizontalLayout_43")
+        self.lista_jogos_desenvolvedor = QComboBox(self.frame_25)
+        self.lista_jogos_desenvolvedor.setObjectName(u"lista_jogos_desenvolvedor")
+
+        self.horizontalLayout_43.addWidget(self.lista_jogos_desenvolvedor)
+
+
+        self.horizontalLayout_42.addLayout(self.horizontalLayout_43)
+
+        self.verticalLayout_46 = QVBoxLayout()
+        self.verticalLayout_46.setSpacing(6)
+        self.verticalLayout_46.setObjectName(u"verticalLayout_46")
+        self.editar_jogo_button = QPushButton(self.frame_25)
+        self.editar_jogo_button.setObjectName(u"editar_jogo_button")
+        self.editar_jogo_button.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.verticalLayout_46.addWidget(self.editar_jogo_button)
+
+        self.excluir_jogo_button = QPushButton(self.frame_25)
+        self.excluir_jogo_button.setObjectName(u"excluir_jogo_button")
+        self.excluir_jogo_button.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.verticalLayout_46.addWidget(self.excluir_jogo_button)
+
+
+        self.horizontalLayout_42.addLayout(self.verticalLayout_46)
+
+
+        self.verticalLayout_45.addLayout(self.horizontalLayout_42)
+
+        self.voltar_lista_jogos = QPushButton(self.frame_25)
+        self.voltar_lista_jogos.setObjectName(u"voltar_lista_jogos")
+        self.voltar_lista_jogos.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.verticalLayout_45.addWidget(self.voltar_lista_jogos)
+
+
+        self.verticalLayout_44.addLayout(self.verticalLayout_45)
+
+
+        self.horizontalLayout_41.addWidget(self.frame_25)
+
+
+        self.verticalLayout_47.addWidget(self.frame_23)
+
+        self.Pages.addWidget(self.pg_lista_jogo)
+        self.pg_editar_jogo = QWidget()
+        self.pg_editar_jogo.setObjectName(u"pg_editar_jogo")
+        self.verticalLayout_52 = QVBoxLayout(self.pg_editar_jogo)
+        self.verticalLayout_52.setSpacing(0)
+        self.verticalLayout_52.setObjectName(u"verticalLayout_52")
+        self.verticalLayout_52.setContentsMargins(0, 0, 0, 0)
+        self.frame_26 = QFrame(self.pg_editar_jogo)
+        self.frame_26.setObjectName(u"frame_26")
+        self.frame_26.setStyleSheet(u"background-color: rgb(80, 80, 80);")
+        self.frame_26.setFrameShape(QFrame.NoFrame)
+        self.frame_26.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_48 = QHBoxLayout(self.frame_26)
+        self.horizontalLayout_48.setObjectName(u"horizontalLayout_48")
+        self.frame_27 = QFrame(self.frame_26)
+        self.frame_27.setObjectName(u"frame_27")
+        self.frame_27.setMaximumSize(QSize(600, 300))
+        self.frame_27.setStyleSheet(u"background-color: rgb(60, 60, 60);")
+        self.frame_27.setFrameShape(QFrame.StyledPanel)
+        self.frame_27.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_48 = QVBoxLayout(self.frame_27)
+        self.verticalLayout_48.setObjectName(u"verticalLayout_48")
+        self.verticalLayout_49 = QVBoxLayout()
+        self.verticalLayout_49.setSpacing(48)
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.label_19 = QLabel(self.frame_27)
+        self.label_19.setObjectName(u"label_19")
+        self.label_19.setStyleSheet(u"background-color: rgb(53, 53, 53);")
+
+        self.verticalLayout_49.addWidget(self.label_19)
+
+        self.verticalLayout_50 = QVBoxLayout()
+        self.verticalLayout_50.setSpacing(30)
+        self.verticalLayout_50.setObjectName(u"verticalLayout_50")
+        self.horizontalLayout_44 = QHBoxLayout()
+        self.horizontalLayout_44.setObjectName(u"horizontalLayout_44")
+        self.horizontalLayout_44.setContentsMargins(0, -1, -1, -1)
+        self.novo_radio_jogo_alta = QRadioButton(self.frame_27)
+        self.novo_radio_jogo_alta.setObjectName(u"novo_radio_jogo_alta")
+        self.novo_radio_jogo_alta.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_44.addWidget(self.novo_radio_jogo_alta)
+
+        self.novo_radio_jogo_media = QRadioButton(self.frame_27)
+        self.novo_radio_jogo_media.setObjectName(u"novo_radio_jogo_media")
+        self.novo_radio_jogo_media.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_44.addWidget(self.novo_radio_jogo_media)
+
+        self.novo_radio_jogo_baixa = QRadioButton(self.frame_27)
+        self.novo_radio_jogo_baixa.setObjectName(u"novo_radio_jogo_baixa")
+        self.novo_radio_jogo_baixa.setMaximumSize(QSize(100, 16777215))
+
+        self.horizontalLayout_44.addWidget(self.novo_radio_jogo_baixa)
+
+
+        self.verticalLayout_50.addLayout(self.horizontalLayout_44)
+
+        self.horizontalLayout_45 = QHBoxLayout()
+        self.horizontalLayout_45.setObjectName(u"horizontalLayout_45")
+        self.novo_titulo_input = QLineEdit(self.frame_27)
+        self.novo_titulo_input.setObjectName(u"novo_titulo_input")
+        self.novo_titulo_input.setMaximumSize(QSize(400, 100))
+        self.novo_titulo_input.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_45.addWidget(self.novo_titulo_input)
+
+        self.novo_valor_jogo = QLineEdit(self.frame_27)
+        self.novo_valor_jogo.setObjectName(u"novo_valor_jogo")
+        self.novo_valor_jogo.setMaximumSize(QSize(50, 16777215))
+        self.novo_valor_jogo.setAlignment(Qt.AlignCenter)
+
+        self.horizontalLayout_45.addWidget(self.novo_valor_jogo)
+
+
+        self.verticalLayout_50.addLayout(self.horizontalLayout_45)
+
+        self.horizontalLayout_46 = QHBoxLayout()
+        self.horizontalLayout_46.setObjectName(u"horizontalLayout_46")
+        self.pushButton_7 = QPushButton(self.frame_27)
+        self.pushButton_7.setObjectName(u"pushButton_7")
+        self.pushButton_7.setEnabled(False)
+        self.pushButton_7.setAutoDefault(False)
+        self.pushButton_7.setFlat(True)
+
+        self.horizontalLayout_46.addWidget(self.pushButton_7)
+
+        self.salvar_edit_jogo_button = QPushButton(self.frame_27)
+        self.salvar_edit_jogo_button.setObjectName(u"salvar_edit_jogo_button")
+        self.salvar_edit_jogo_button.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.horizontalLayout_46.addWidget(self.salvar_edit_jogo_button)
+
+        self.pushButton_14 = QPushButton(self.frame_27)
+        self.pushButton_14.setObjectName(u"pushButton_14")
+        self.pushButton_14.setEnabled(False)
+        self.pushButton_14.setFlat(True)
+
+        self.horizontalLayout_46.addWidget(self.pushButton_14)
+
+
+        self.verticalLayout_50.addLayout(self.horizontalLayout_46)
+
+
+        self.verticalLayout_49.addLayout(self.verticalLayout_50)
+
+        self.voltar_editar_jogo = QPushButton(self.frame_27)
+        self.voltar_editar_jogo.setObjectName(u"voltar_editar_jogo")
+        self.voltar_editar_jogo.setStyleSheet(u"QPushButton{\n"
+"	color:rgb(255,255,255);\n"
+"	border-radius: 1px;\n"
+"	font-size: 16px;\n"
+"	\n"
+"	background-color: rgb(45, 45, 45);\n"
+"}\n"
+"QPushButtonshover{background-color: #fff; color:black}")
+
+        self.verticalLayout_49.addWidget(self.voltar_editar_jogo)
+
+
+        self.verticalLayout_48.addLayout(self.verticalLayout_49)
+
+
+        self.horizontalLayout_48.addWidget(self.frame_27)
+
+
+        self.verticalLayout_52.addWidget(self.frame_26)
+
+        self.Pages.addWidget(self.pg_editar_jogo)
+
+        self.horizontalLayout_47.addWidget(self.Pages)
 
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
 
-        self.Pages.setCurrentIndex(0)
+        self.Pages.setCurrentIndex(9)
         self.pushButton_4.setDefault(False)
+        self.pushButton_5.setDefault(False)
+        self.pushButton_7.setDefault(False)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1019,8 +1603,8 @@ class Ui_MainWindow(object):
         self.create_account_button.setText(QCoreApplication.translate("MainWindow", u"Create Account", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Jogador</span></p></body></html>", None))
         self.abastecer_creditos.setText(QCoreApplication.translate("MainWindow", u"Abastecer Creditos", None))
-        self.alugar_maquina.setText(QCoreApplication.translate("MainWindow", u"Alugar Maquina", None))
-        self.pesquisar_jogo.setText(QCoreApplication.translate("MainWindow", u"Pesquisar Jogo", None))
+        self.alugar_maquina_button.setText(QCoreApplication.translate("MainWindow", u"Alugar Maquina", None))
+        self.buscar.setText(QCoreApplication.translate("MainWindow", u"Buscar", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.relatorio_jogador.setText(QCoreApplication.translate("MainWindow", u"Relatorio", None))
         self.sairjogador.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
@@ -1035,7 +1619,7 @@ class Ui_MainWindow(object):
         self.listar_jogos.setText(QCoreApplication.translate("MainWindow", u"Listar Jogos", None))
         self.cadastrar_jogo.setText(QCoreApplication.translate("MainWindow", u"Cadastrar Jogo", None))
         self.sairdesenvolvedor.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Cadastar Maquina</span></p></body></html>", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Cadastrar Maquina</span></p></body></html>", None))
         self.radio_alta.setText(QCoreApplication.translate("MainWindow", u"Alta", None))
         self.radio_media.setText(QCoreApplication.translate("MainWindow", u"Media", None))
         self.radio_baixa.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))
@@ -1052,15 +1636,57 @@ class Ui_MainWindow(object):
         self.voltar_lista_maquinas.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Editar Maquina</span></p><p align=\"center\"><br/></p></body></html>", None))
         self.nome_maquina_editada.setText(QCoreApplication.translate("MainWindow", u"Maquina X", None))
-        self.Adicionar_jogo.setText(QCoreApplication.translate("MainWindow", u"Adicionar Jogo", None))
+        self.adicionar_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Adicionar Jogo", None))
         self.radio_baixo_edit.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))
         self.radio_media_edit.setText(QCoreApplication.translate("MainWindow", u"Media", None))
         self.radio_alta_edit.setText(QCoreApplication.translate("MainWindow", u"Alta", None))
-        self.salvar_edit.setText(QCoreApplication.translate("MainWindow", u"Salvar", None))
+        self.salvar_edit_maquina_button.setText(QCoreApplication.translate("MainWindow", u"Salvar", None))
 #if QT_CONFIG(accessibility)
         self.porcentagem_edit.setAccessibleDescription("")
 #endif // QT_CONFIG(accessibility)
         self.porcentagem_edit.setSuffix(QCoreApplication.translate("MainWindow", u"%", None))
         self.voltar_edit.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.busca_lista_maquina.setText(QCoreApplication.translate("MainWindow", u"Listar Maquinas", None))
+        self.busca_lista_jogos.setText(QCoreApplication.translate("MainWindow", u"Listar Jogos", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"Selecione o jogo", None))
+        self.label_12.setText(QCoreApplication.translate("MainWindow", u"Selecione uma maquina", None))
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Nome", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Valor", None));
+        self.label_10.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#fefefe;\">Busca</span></p></body></html>", None))
+        self.voltar_busca.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.label_13.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Alugar Maquina</span></p></body></html>", None))
+        self.label_14.setText(QCoreApplication.translate("MainWindow", u"Selecione o jogo:", None))
+        self.label_15.setText(QCoreApplication.translate("MainWindow", u"Selecione a maquina:", None))
+        self.label_20.setText(QCoreApplication.translate("MainWindow", u"Quantidade de horas", None))
+        self.alugar_button.setText(QCoreApplication.translate("MainWindow", u"Alugar", None))
+        self.voltar_alugar_maquina.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.label_16.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Cadastrar Jogo</span></p></body></html>", None))
+        self.radio_jogo_alta.setText(QCoreApplication.translate("MainWindow", u"Alta", None))
+        self.radio_jogo_media.setText(QCoreApplication.translate("MainWindow", u"Media", None))
+        self.radio_jogo_baixa.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))
+        self.titulo_input.setText("")
+        self.titulo_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Titulo do Jogo", None))
+        self.valor_jogo.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Valor", None))
+        self.pushButton_5.setText("")
+        self.cadastrar_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+        self.pushButton_12.setText("")
+        self.voltar_cadastrar_jogo.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.label_18.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Lista de Jogos</span></p></body></html>", None))
+        self.editar_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Editar", None))
+        self.excluir_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Excluir", None))
+        self.voltar_lista_jogos.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
+        self.label_19.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Editar Jogo</span></p></body></html>", None))
+        self.novo_radio_jogo_alta.setText(QCoreApplication.translate("MainWindow", u"Alta", None))
+        self.novo_radio_jogo_media.setText(QCoreApplication.translate("MainWindow", u"Media", None))
+        self.novo_radio_jogo_baixa.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))
+        self.novo_titulo_input.setText("")
+        self.novo_titulo_input.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Titulo do Jogo", None))
+        self.novo_valor_jogo.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Valor", None))
+        self.pushButton_7.setText("")
+        self.salvar_edit_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Cadastrar", None))
+        self.pushButton_14.setText("")
+        self.voltar_editar_jogo.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
     # retranslateUi
 

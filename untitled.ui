@@ -6,15 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>852</width>
-    <height>475</height>
+    <width>759</width>
+    <height>569</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_23">
+   <layout class="QHBoxLayout" name="horizontalLayout_47">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -39,7 +39,7 @@
        <enum>QFrame::NoFrame</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>9</number>
       </property>
       <widget class="QWidget" name="pg_login">
        <layout class="QVBoxLayout" name="_2">
@@ -501,7 +501,7 @@ QPushButtonshover{background-color: #fff; color:black}</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="alugar_maquina">
+                     <widget class="QPushButton" name="alugar_maquina_button">
                       <property name="styleSheet">
                        <string notr="true">QPushButton{
 	color:rgb(255,255,255);
@@ -518,7 +518,7 @@ QPushButtonshover{background-color: #fff; color:black}</string>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pesquisar_jogo">
+                     <widget class="QPushButton" name="buscar">
                       <property name="styleSheet">
                        <string notr="true">QPushButton{
 	color:rgb(255,255,255);
@@ -530,7 +530,7 @@ QPushButtonshover{background-color: #fff; color:black}</string>
 QPushButtonshover{background-color: #fff; color:black}</string>
                       </property>
                       <property name="text">
-                       <string>Pesquisar Jogo</string>
+                       <string>Buscar</string>
                       </property>
                      </widget>
                     </item>
@@ -1074,7 +1074,7 @@ QPushButtonshover{background-color: #fff; color:black}</string>
                    <string notr="true">background-color: rgb(53, 53, 53);</string>
                   </property>
                   <property name="text">
-                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Cadastar Maquina&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Cadastrar Maquina&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                  </widget>
                 </item>
@@ -1478,15 +1478,15 @@ QPushButtonshover{background-color: #fff; color:black}</string>
              <property name="frameShadow">
               <enum>QFrame::Raised</enum>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_27">
+             <layout class="QVBoxLayout" name="verticalLayout_36">
               <item>
-               <layout class="QVBoxLayout" name="verticalLayout_25">
+               <layout class="QVBoxLayout" name="verticalLayout_27">
                 <item>
                  <widget class="QLabel" name="label_8">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
-                    <height>16777215</height>
+                    <height>40</height>
                    </size>
                   </property>
                   <property name="layoutDirection">
@@ -1502,6 +1502,11 @@ QPushButtonshover{background-color: #fff; color:black}</string>
                 </item>
                 <item>
                  <widget class="QLabel" name="nome_maquina_editada">
+                  <property name="font">
+                   <font>
+                    <pointsize>12</pointsize>
+                   </font>
+                  </property>
                   <property name="text">
                    <string>Maquina X</string>
                   </property>
@@ -1511,16 +1516,21 @@ QPushButtonshover{background-color: #fff; color:black}</string>
                  </widget>
                 </item>
                 <item>
-                 <layout class="QVBoxLayout" name="verticalLayout_24">
+                 <layout class="QVBoxLayout" name="verticalLayout_25">
                   <property name="spacing">
-                   <number>30</number>
+                   <number>50</number>
                   </property>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_26">
                     <item>
-                     <widget class="QPushButton" name="Adicionar_jogo">
-                      <property name="styleSheet">
-                       <string notr="true">QPushButton{
+                     <layout class="QVBoxLayout" name="verticalLayout_24">
+                      <item>
+                       <widget class="QComboBox" name="lista_jogos_adicionar"/>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="adicionar_jogo_button">
+                        <property name="styleSheet">
+                         <string notr="true">QPushButton{
 	color:rgb(255,255,255);
 	border-radius: 1px;
 	font-size: 16px;
@@ -1528,11 +1538,13 @@ QPushButtonshover{background-color: #fff; color:black}</string>
 	background-color: rgb(45, 45, 45);
 }
 QPushButtonshover{background-color: #fff; color:black}</string>
-                      </property>
-                      <property name="text">
-                       <string>Adicionar Jogo</string>
-                      </property>
-                     </widget>
+                        </property>
+                        <property name="text">
+                         <string>Adicionar Jogo</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </item>
                     <item>
                      <layout class="QGridLayout" name="gridLayout">
@@ -1566,7 +1578,7 @@ QPushButtonshover{background-color: #fff; color:black}</string>
                        </layout>
                       </item>
                       <item row="1" column="1">
-                       <widget class="QPushButton" name="salvar_edit">
+                       <widget class="QPushButton" name="salvar_edit_maquina_button">
                         <property name="styleSheet">
                          <string notr="true">QPushButton{
 	color:rgb(255,255,255);
@@ -1631,8 +1643,1068 @@ QPushButtonshover{background-color: #fff; color:black}</string>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="page_4"/>
-      <widget class="QWidget" name="page_5"/>
+      <widget class="QWidget" name="pg_buscar">
+       <layout class="QVBoxLayout" name="verticalLayout_34">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame_17">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(80, 80, 80);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_29">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_18">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>300</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(60, 60, 60);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <widget class="QPushButton" name="busca_lista_maquina">
+              <property name="geometry">
+               <rect>
+                <x>41</x>
+                <y>214</y>
+                <width>109</width>
+                <height>19</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+              </property>
+              <property name="text">
+               <string>Listar Maquinas</string>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="lista_de_jogos">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>140</y>
+                <width>73</width>
+                <height>18</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QComboBox" name="lista_de_maquinas">
+              <property name="geometry">
+               <rect>
+                <x>420</x>
+                <y>130</y>
+                <width>73</width>
+                <height>18</height>
+               </rect>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="busca_lista_jogos">
+              <property name="geometry">
+               <rect>
+                <x>401</x>
+                <y>221</y>
+                <width>84</width>
+                <height>19</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+              </property>
+              <property name="text">
+               <string>Listar Jogos</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_11">
+              <property name="geometry">
+               <rect>
+                <x>50</x>
+                <y>80</y>
+                <width>78</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Selecione o jogo</string>
+              </property>
+             </widget>
+             <widget class="QLabel" name="label_12">
+              <property name="geometry">
+               <rect>
+                <x>400</x>
+                <y>80</y>
+                <width>111</width>
+                <height>16</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>Selecione uma maquina</string>
+              </property>
+             </widget>
+             <widget class="QTableWidget" name="tableWidget">
+              <property name="geometry">
+               <rect>
+                <x>170</x>
+                <y>50</y>
+                <width>211</width>
+                <height>192</height>
+               </rect>
+              </property>
+              <column>
+               <property name="text">
+                <string>Nome</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Valor</string>
+               </property>
+              </column>
+             </widget>
+             <widget class="QLabel" name="label_10">
+              <property name="geometry">
+               <rect>
+                <x>230</x>
+                <y>0</y>
+                <width>92</width>
+                <height>29</height>
+               </rect>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(53, 53, 53);</string>
+              </property>
+              <property name="text">
+               <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#fefefe;&quot;&gt;Busca&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="voltar_busca">
+              <property name="geometry">
+               <rect>
+                <x>250</x>
+                <y>270</y>
+                <width>42</width>
+                <height>19</height>
+               </rect>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+              </property>
+              <property name="text">
+               <string>Voltar</string>
+              </property>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pg_alugar_maquina">
+       <layout class="QVBoxLayout" name="verticalLayout_35">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame_19">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(80, 80, 80);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_30">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_20">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>300</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(60, 60, 60);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_23">
+              <item>
+               <widget class="QLabel" name="label_13">
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">background-color: rgb(53, 53, 53);</string>
+                </property>
+                <property name="text">
+                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Alugar Maquina&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_33">
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+                <property name="leftMargin">
+                 <number>15</number>
+                </property>
+                <property name="rightMargin">
+                 <number>15</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_31">
+                  <item>
+                   <widget class="QLabel" name="label_14">
+                    <property name="text">
+                     <string>Selecione o jogo:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="lista_jogos_alugar">
+                    <property name="maximumSize">
+                     <size>
+                      <width>300</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_32">
+                  <item>
+                   <widget class="QLabel" name="label_15">
+                    <property name="text">
+                     <string>Selecione a maquina:</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QComboBox" name="lista_maquinas_aluguel">
+                    <property name="maximumSize">
+                     <size>
+                      <width>300</width>
+                      <height>16777215</height>
+                     </size>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_49">
+                <item>
+                 <widget class="QLabel" name="label_20">
+                  <property name="text">
+                   <string>Quantidade de horas</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="horas">
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>5</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QPushButton" name="alugar_button">
+                <property name="text">
+                 <string>Alugar</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="voltar_alugar_maquina">
+                <property name="styleSheet">
+                 <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                </property>
+                <property name="text">
+                 <string>Voltar</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pg_cadastro_jogo">
+       <layout class="QVBoxLayout" name="verticalLayout_39">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame_21">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(80, 80, 80);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_33">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_22">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>300</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(60, 60, 60);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_40">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_38">
+                <property name="spacing">
+                 <number>48</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_16">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(53, 53, 53);</string>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Cadastrar Jogo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_37">
+                  <property name="spacing">
+                   <number>30</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_34">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QRadioButton" name="radio_jogo_alta">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Alta</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radio_jogo_media">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Media</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="radio_jogo_baixa">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Baixa</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_35">
+                    <item>
+                     <widget class="QLineEdit" name="titulo_input">
+                      <property name="maximumSize">
+                       <size>
+                        <width>400</width>
+                        <height>100</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Titulo do Jogo</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="valor_jogo">
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Valor</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_36">
+                    <item>
+                     <widget class="QPushButton" name="pushButton_5">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="autoDefault">
+                       <bool>false</bool>
+                      </property>
+                      <property name="default">
+                       <bool>false</bool>
+                      </property>
+                      <property name="flat">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="cadastrar_jogo_button">
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                      </property>
+                      <property name="text">
+                       <string>Cadastrar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_12">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="flat">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="voltar_cadastrar_jogo">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                  </property>
+                  <property name="text">
+                   <string>Voltar</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pg_lista_jogo">
+       <layout class="QVBoxLayout" name="verticalLayout_47">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame_23">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(80, 80, 80);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_41">
+           <property name="spacing">
+            <number>0</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <property name="bottomMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QFrame" name="frame_25">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>300</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(60, 60, 60);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_44">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_45">
+                <property name="spacing">
+                 <number>50</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_18">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(53, 53, 53);</string>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Lista de Jogos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_42">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_43">
+                    <item>
+                     <widget class="QComboBox" name="lista_jogos_desenvolvedor"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QVBoxLayout" name="verticalLayout_46">
+                    <property name="spacing">
+                     <number>6</number>
+                    </property>
+                    <item>
+                     <widget class="QPushButton" name="editar_jogo_button">
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                      </property>
+                      <property name="text">
+                       <string>Editar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="excluir_jogo_button">
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                      </property>
+                      <property name="text">
+                       <string>Excluir</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="voltar_lista_jogos">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                  </property>
+                  <property name="text">
+                   <string>Voltar</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="pg_editar_jogo">
+       <layout class="QVBoxLayout" name="verticalLayout_52">
+        <property name="spacing">
+         <number>0</number>
+        </property>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QFrame" name="frame_26">
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(80, 80, 80);</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::NoFrame</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout_48">
+           <item>
+            <widget class="QFrame" name="frame_27">
+             <property name="maximumSize">
+              <size>
+               <width>600</width>
+               <height>300</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background-color: rgb(60, 60, 60);</string>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_48">
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_49">
+                <property name="spacing">
+                 <number>48</number>
+                </property>
+                <item>
+                 <widget class="QLabel" name="label_19">
+                  <property name="styleSheet">
+                   <string notr="true">background-color: rgb(53, 53, 53);</string>
+                  </property>
+                  <property name="text">
+                   <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:18pt; color:#ffffff;&quot;&gt;Editar Jogo&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_50">
+                  <property name="spacing">
+                   <number>30</number>
+                  </property>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_44">
+                    <property name="leftMargin">
+                     <number>0</number>
+                    </property>
+                    <item>
+                     <widget class="QRadioButton" name="novo_radio_jogo_alta">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Alta</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="novo_radio_jogo_media">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Media</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QRadioButton" name="novo_radio_jogo_baixa">
+                      <property name="maximumSize">
+                       <size>
+                        <width>100</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string>Baixa</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_45">
+                    <item>
+                     <widget class="QLineEdit" name="novo_titulo_input">
+                      <property name="maximumSize">
+                       <size>
+                        <width>400</width>
+                        <height>100</height>
+                       </size>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Titulo do Jogo</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLineEdit" name="novo_valor_jogo">
+                      <property name="maximumSize">
+                       <size>
+                        <width>50</width>
+                        <height>16777215</height>
+                       </size>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Valor</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_46">
+                    <item>
+                     <widget class="QPushButton" name="pushButton_7">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="autoDefault">
+                       <bool>false</bool>
+                      </property>
+                      <property name="default">
+                       <bool>false</bool>
+                      </property>
+                      <property name="flat">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="salvar_edit_jogo_button">
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                      </property>
+                      <property name="text">
+                       <string>Cadastrar</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QPushButton" name="pushButton_14">
+                      <property name="enabled">
+                       <bool>false</bool>
+                      </property>
+                      <property name="text">
+                       <string/>
+                      </property>
+                      <property name="flat">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="voltar_editar_jogo">
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton{
+	color:rgb(255,255,255);
+	border-radius: 1px;
+	font-size: 16px;
+	
+	background-color: rgb(45, 45, 45);
+}
+QPushButtonshover{background-color: #fff; color:black}</string>
+                  </property>
+                  <property name="text">
+                   <string>Voltar</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>

@@ -61,9 +61,12 @@ class Maquina:
         if jogo == None:
             return False
         else:
-            jogo.registrar_maquina(self.nome)  # pra possibilitar pesquisa por máquina ou por jogo
-            self.jogos.append(jogo.titulo)  
-            return True
+            if jogo.titulo in self.jogos:
+                return False
+            else:
+                jogo.registrar_maquina(self.nome)  # pra possibilitar pesquisa por máquina ou por jogo
+                self.jogos.append(jogo.titulo)
+                return True
         
     def pegar_lista_usuarios(self):
         return self.__lista_usuarios
@@ -107,7 +110,7 @@ class Jogo:
         self.__requisitos = requisitos
         self.__valor = valor
         self.__desenvolvedor = desenvolvedor
-        self.__gerar_hora_aluguel(self)
+        self.__gerar_hora_aluguel()
 
         lista_de_jogos.append(self)
         print(f'jogo {self} cadastrada')
@@ -209,7 +212,7 @@ class ContaDesenvolvedor(Conta):
         novo_jogo = Jogo()
         if not self.verificar_jogo_duplicado(titulo):
             novo_jogo.cadastrar(titulo, requisitos, valor, self.login)
-            self.__jogos.append(novo_jogo)
+            self.__jogos.append(novo_jogo.titulo)
             return True
         else:
             return False
@@ -288,13 +291,13 @@ class ContaProvedor(Conta):
     def cadastrar_maquina(self, especificacao, porcentagem, nome):
         especificacoes = especificacao
         porcentagem_uso = porcentagem
-        if not self.verificar_maquina_duplicada(nome):          
+        if not self.verificar_maquina_duplicada(nome):
             maquina = Maquina().criar_maquina(especificacoes, porcentagem_uso, nome, self.login)
             self.__maquinas.append(maquina.nome)
             return True
-        else:    
+        else:
             return False
-        
+
 
     def listar_maquinas(self):
         return self.__maquinas
@@ -431,6 +434,7 @@ class ContaJogador(Conta):
         else:
             transacao = Transacao(self, maquina.provedor, jogo.desenvolvedor)
             transacao.aluguel(maquina, jogo, horas)
+            return True
 
 class Transacao:
     def _init_(self, jogador, provedor, desenvolver):
@@ -519,9 +523,9 @@ class RelatorioDesenvolvedor(Relatorio):
         for titulo_jogo in desenvolvedor.listar_jogos():
             for jogo in lista_de_jogos:
                 if titulo_jogo == jogo.titulo:
-                    relatorio.append({"Titulo": jogo.titulo, 
-                                    "Tempo jogado" : jogo.tempo_jogado, 
-                                    "Tempo total" : jogo.tempo_total, 
+                    relatorio.append({"Titulo": jogo.titulo,
+                                    "Tempo jogado" : jogo.tempo_jogado,
+                                    "Tempo total" : jogo.tempo_total,
                                     "Jogadores" : jogo.listar_jogadores()})
 
 class RelatorioProvedor(Relatorio):
@@ -533,9 +537,9 @@ class RelatorioProvedor(Relatorio):
         for nome_maquina in provedor.listar_maquinas():
             for maquina in lista_de_maquinas:
                 if nome_maquina == maquina.nome:
-                    relatorio.append({"Nome" : maquina.nome, 
-                                    "Horas em uso" : maquina.horas_em_uso, 
-                                    "Ganhos" : maquina.calcular_ganho(), 
+                    relatorio.append({"Nome" : maquina.nome,
+                                    "Horas em uso" : maquina.horas_em_uso,
+                                    "Ganhos" : maquina.calcular_ganho(),
                                     "Usuarios" : maquina.pegar_lista_usuario})
 
 
