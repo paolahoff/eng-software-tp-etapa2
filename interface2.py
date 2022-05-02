@@ -277,11 +277,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             msg.exec_()
             return
         self.conta.editar_maquina(self.nome_maquina, especificacao, self.porcentagem_input.value())
+        msg = QMessageBox()
+        msg.setText('Máquina editada')
+        msg.exec_()
         return
 
     def excluir_jogo(self):
         self.conta.remover_jogo(self.lista_jogos_desenvolvedor.currentText())
         self.lista_jogos_desenvolvedor.removeItem(self.lista_jogos_desenvolvedor.currentIndex())
+        msg = QMessageBox()
+        msg.setText('Jogo excluido')
+        msg.exec_()
+        return
         pass
 
     def editar_jogo(self):
@@ -318,12 +325,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 msg.exec_()
                 return
             self.conta.cadastrar_jogo(self.titulo_input.text(),especificacao, valor)
+            msg = QMessageBox()
+            msg.setText('Jogo cadastrado')
+            msg.exec_()
             return
         else:
             msg = QMessageBox()
             msg.setText('Escolha um titulo para o jogo')
             msg.exec_()
             return
+
 
 
     def adicionar_jogo(self):
@@ -375,6 +386,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def excluir_maquina(self):
         self.conta.remover_maquina(self.lista_maquinas_provedor.currentText())
         self.lista_maquinas_provedor.removeItem(self.lista_maquinas_provedor.currentIndex())
+        msg = QMessageBox()
+        msg.setText('Maquina excluida com sucesso')
+        msg.exec_()
+        return
 
     def listar_maquinas(self):
         self.lista_maquinas_provedor.clear()
@@ -388,7 +403,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             especificacao = 'Alta'
         elif self.radio_media.isChecked():
             especificacao = 'Media'
-        elif self.radio_media.isChecked():
+        elif self.radio_baixa.isChecked():
             especificacao = 'Baixa'
         else:
             msg = QMessageBox()
@@ -397,12 +412,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return
         if self.nome_maquina_input.text() != '':
             self.conta.cadastrar_maquina(especificacao, self.porcentagem_input.value(), self.nome_maquina_input.text())
-
         else:
             msg = QMessageBox()
             msg.setText('Escolha um nome para a Maquina')
             msg.exec_()
             return
+        msg = QMessageBox()
+        msg.setText('Maquina cadastrada')
+        msg.exec_()
+        return
 
     def logar(self):
         for conta in classes.lista_de_contas:
@@ -428,7 +446,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                     return
 
-        print('login falhou, usuario ou senha incorretos')
+        msg = QMessageBox()
+        msg.setText('Login falhou, usuario ou senha incorretos')
+        msg.exec_()
+        return
         return None
 
     def criar_conta(self):
@@ -453,7 +474,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     classes.ContaJogador().criar_conta(username, senha)
                     self.password_input_2.setText('')
                     self.username_input_2.setText('')
-                    msg = QMessageBox()
+                    msg = QMessageBox()                             #basicamente isso para retornar após pop up
                     msg.setText('Conta criada')
                     msg.exec_()
                     self.Pages.setCurrentWidget(self.pg_login)
