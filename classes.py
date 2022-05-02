@@ -24,7 +24,9 @@ class Maquina:
         self.ganhos = 0
         self.jogos = list()
         self.horas_totais = 0
-        self.provedor = None
+        self.__provedor = None
+
+    
 
     def zerar_ganhos(self):
         self.__ganhos = 0
@@ -36,14 +38,14 @@ class Maquina:
         return
 
     def __gerar_hora_aluguel(self):
-        hora_aluguel = self.__porcentagem_uso * self.precos[self.__especificacoes]
+        hora_aluguel = (self.__porcentagem_uso * self.precos[self.__especificacoes]) / 10 #tava muito caro comparado com o jogo, mas isso só entra quando resetarmos as contas
         return hora_aluguel
 
     def criar_maquina(self, especificacoes, porcentagem_uso, nome, provedor):
         self.nome = nome
         self.__especificacoes = especificacoes
         self.__porcentagem_uso = porcentagem_uso
-        self.provedor = provedor
+        self.__provedor = provedor
         self.hora_aluguel = self.__gerar_hora_aluguel()
         lista_de_maquinas.append(self)
         print(f'maquina {self} cadastrada')
@@ -87,6 +89,9 @@ class Maquina:
         self.horas_totais += self.horas_em_uso
         #self.horas_em_uso = 0
         return self.ganhos
+
+    def get_provedor(self):
+        return self.__provedor
 
 class Jogo:
     def __init__(self):
@@ -259,7 +264,7 @@ class ContaDesenvolvedor(Conta):
         return creditos
 
     def atualizar_ganhos_totais(self, ganho):
-        self.self.ganhos_totais += ganho
+        self.ganhos_totais += ganho
         return
 
     def relatorio(self):
@@ -347,7 +352,7 @@ class ContaProvedor(Conta):
                 maquina.baixar_jogo(titulo)
 
     def atualizar_ganhos_totais(self, ganho):
-        self.self.ganhos_totais += ganho
+        self.ganhos_totais += ganho
         return
 
     # def calcular_ganhos(self):
@@ -411,16 +416,24 @@ class ContaJogador(Conta):
                     pass
             
     def definir_aluguel(self,nome_maquina,titulo_jogo):
-        maquina_selecionada = None
-        jogo_selecionado = None
+        maquina_ok = False
+        jogo_ok = False
+
+
         for maquina in lista_de_maquinas:
             if maquina.nome == nome_maquina:
+                maquina_ok = True
                 break
-        if titulo_jogo in maquina_selecionada.jogos:    
+        if not maquina_ok:
+            print("erro na maquina")
+            return None, None
+            
+        if titulo_jogo in maquina.jogos:    
             for jogo in lista_de_jogos:
                 if jogo.titulo == titulo_jogo:
+                    jogo_ok = True
                     break
-        if jogo_selecionado == None:
+        if not jogo_ok:
             print ("Jogo e maquina incompativeis")
             return None, None
         return maquina, jogo
@@ -428,21 +441,36 @@ class ContaJogador(Conta):
     def alugar_maquina(self, nome_maquina, titulo_jogo, horas):
         maquina, jogo = self.definir_aluguel(nome_maquina, titulo_jogo) #Se não for compativel maquina e jogo serão NONE
         
+
         if maquina == None:
             return False  #se não deu certo o aluguel retorna FALSE pra tentar de novo
 
         else:
-            transacao = Transacao(self, maquina.provedor, jogo.desenvolvedor)
-            transacao.aluguel(maquina, jogo, horas)
-            return True
+            transacao = Transacao()
+            transacao.criar_transacao(self, maquina.get_provedor(),jogo.get_desenvolvedor())
+            #print(self.pegar_creditos())
+            if transacao.aluguel(maquina, jogo, horas):
+                #print(self.pegar_creditos())
+                return True
+            else:
+                return False
 
 class Transacao:
-    def _init_(self, jogador, provedor, desenvolver):
-        self.jogador = jogador
-        self.provedor = provedor
-        self.desenvolvedor = desenvolver
-        pass
+    def _init_(self):
+        self.jogador = None
+        self.provedor = None
+        self.desenvolvedor = None
 
+
+    def criar_transacao(self, jogador, provedor, desenvolvedor):
+        self.jogador = jogador
+        self.provedor = self.buscar_conta(provedor)
+        self.desenvolvedor = self.buscar_conta(desenvolvedor)
+
+    def buscar_conta(self, login):
+        for conta in lista_de_contas:
+            if conta.login == login:
+                return conta
 
     def aluguel(self,maquina, jogo, horas):
         aluguel_maquina = maquina.hora_aluguel * horas
@@ -458,6 +486,7 @@ class Transacao:
             maquina.adicionar_lista_usuarios(self.jogador.login)
 
             self.jogador.descontar_creditos(aluguel_total)
+            #print(self.jogador.pegar_creditos())
 
             self.provedor.adicionar_creditos(aluguel_maquina)
             self.provedor.atualizar_ganhos_totais(aluguel_maquina)
@@ -465,7 +494,7 @@ class Transacao:
             self.desenvolvedor.adicionar_creditos(aluguel_jogo)
             self.desenvolvedor.atualizar_ganhos_totais(aluguel_jogo)
 
-            self.atualizar_dados()
+            #self.atualizar_dados()
             return True
 
         else:

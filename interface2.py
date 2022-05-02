@@ -109,6 +109,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             msg.setText('Alugado')
             msg.exec_()
             return
+        else:
+            msg = QMessageBox()
+            msg.setText('Creditos Insuficientes')
+            msg.exec_()
     def alugar_maquina(self):
         for jogo in classes.lista_de_jogos:
             self.lista_jogos_alugar.addItem(jogo.titulo)
