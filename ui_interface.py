@@ -738,9 +738,22 @@ class Ui_MainWindow(object):
         self.frame_32.setMinimumSize(QSize(0, 200))
         self.frame_32.setFrameShape(QFrame.StyledPanel)
         self.frame_32.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.frame_32)
+        self.verticalLayout_48 = QVBoxLayout(self.frame_32)
+        self.verticalLayout_48.setObjectName(u"verticalLayout_48")
+        self.verticalLayout_7 = QVBoxLayout()
+        self.verticalLayout_7.setSpacing(2)
         self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.label_25 = QLabel(self.frame_32)
+        self.label_25.setObjectName(u"label_25")
+        self.label_25.setMaximumSize(QSize(16777215, 30))
+        font2 = QFont()
+        font2.setPointSize(11)
+        self.label_25.setFont(font2)
+
+        self.verticalLayout_7.addWidget(self.label_25)
+
         self.horizontalLayout_18 = QHBoxLayout()
+        self.horizontalLayout_18.setSpacing(6)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
         self.horizontalLayout_18.setContentsMargins(0, -1, -1, -1)
         self.radio_alta = QRadioButton(self.frame_32)
@@ -770,6 +783,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_7.addLayout(self.horizontalLayout_18)
 
+
+        self.verticalLayout_48.addLayout(self.verticalLayout_7)
+
         self.horizontalLayout_19 = QHBoxLayout()
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
         self.nome_maquina_input = QLineEdit(self.frame_32)
@@ -794,7 +810,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_19.addWidget(self.porcentagem_input)
 
 
-        self.verticalLayout_7.addLayout(self.horizontalLayout_19)
+        self.verticalLayout_48.addLayout(self.horizontalLayout_19)
 
         self.horizontalLayout_20 = QHBoxLayout()
         self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
@@ -829,7 +845,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_20.addWidget(self.pushButton_11)
 
 
-        self.verticalLayout_7.addLayout(self.horizontalLayout_20)
+        self.verticalLayout_48.addLayout(self.horizontalLayout_20)
 
 
         self.verticalLayout_13.addWidget(self.frame_32)
@@ -1016,12 +1032,29 @@ class Ui_MainWindow(object):
         self.nome_maquina_editada.setObjectName(u"nome_maquina_editada")
         self.nome_maquina_editada.setMinimumSize(QSize(0, 35))
         self.nome_maquina_editada.setMaximumSize(QSize(16777215, 35))
-        font2 = QFont()
-        font2.setPointSize(12)
-        self.nome_maquina_editada.setFont(font2)
+        font3 = QFont()
+        font3.setPointSize(12)
+        self.nome_maquina_editada.setFont(font3)
         self.nome_maquina_editada.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_19.addWidget(self.nome_maquina_editada)
+
+        self.horizontalLayout_49 = QHBoxLayout()
+        self.horizontalLayout_49.setObjectName(u"horizontalLayout_49")
+        self.label_26 = QLabel(self.frame_34)
+        self.label_26.setObjectName(u"label_26")
+        self.label_26.setMaximumSize(QSize(16777215, 25))
+
+        self.horizontalLayout_49.addWidget(self.label_26)
+
+        self.label_27 = QLabel(self.frame_34)
+        self.label_27.setObjectName(u"label_27")
+        self.label_27.setMaximumSize(QSize(16777215, 25))
+
+        self.horizontalLayout_49.addWidget(self.label_27)
+
+
+        self.verticalLayout_19.addLayout(self.horizontalLayout_49)
 
         self.horizontalLayout_25 = QHBoxLayout()
         self.horizontalLayout_25.setSpacing(12)
@@ -1195,7 +1228,7 @@ class Ui_MainWindow(object):
         self.label_11.setObjectName(u"label_11")
         self.label_11.setMinimumSize(QSize(168, 0))
         self.label_11.setMaximumSize(QSize(16777215, 20))
-        self.label_11.setFont(font2)
+        self.label_11.setFont(font3)
         self.label_11.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_43.addWidget(self.label_11)
@@ -1238,7 +1271,7 @@ class Ui_MainWindow(object):
         self.label_12.setObjectName(u"label_12")
         self.label_12.setMinimumSize(QSize(168, 0))
         self.label_12.setMaximumSize(QSize(16777215, 20))
-        self.label_12.setFont(font2)
+        self.label_12.setFont(font3)
         self.label_12.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_44.addWidget(self.label_12)
@@ -1409,9 +1442,7 @@ class Ui_MainWindow(object):
         self.label_24 = QLabel(self.frame_35)
         self.label_24.setObjectName(u"label_24")
         self.label_24.setMaximumSize(QSize(150, 16777215))
-        font3 = QFont()
-        font3.setPointSize(11)
-        self.label_24.setFont(font3)
+        self.label_24.setFont(font2)
         self.label_24.setLayoutDirection(Qt.LeftToRight)
         self.label_24.setAlignment(Qt.AlignCenter)
 
@@ -1421,7 +1452,7 @@ class Ui_MainWindow(object):
         self.valor_final.setObjectName(u"valor_final")
         self.valor_final.setMinimumSize(QSize(50, 0))
         self.valor_final.setMaximumSize(QSize(60, 30))
-        self.valor_final.setFont(font3)
+        self.valor_final.setFont(font2)
         self.valor_final.setFrameShape(QFrame.Box)
         self.valor_final.setTextFormat(Qt.PlainText)
         self.valor_final.setWordWrap(False)
@@ -1525,8 +1556,17 @@ class Ui_MainWindow(object):
         self.frame_36.setObjectName(u"frame_36")
         self.frame_36.setFrameShape(QFrame.StyledPanel)
         self.frame_36.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_25 = QVBoxLayout(self.frame_36)
+        self.verticalLayout_49 = QVBoxLayout(self.frame_36)
+        self.verticalLayout_49.setObjectName(u"verticalLayout_49")
+        self.verticalLayout_25 = QVBoxLayout()
+        self.verticalLayout_25.setSpacing(3)
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.label_28 = QLabel(self.frame_36)
+        self.label_28.setObjectName(u"label_28")
+        self.label_28.setMaximumSize(QSize(16777215, 25))
+
+        self.verticalLayout_25.addWidget(self.label_28)
+
         self.horizontalLayout_34 = QHBoxLayout()
         self.horizontalLayout_34.setSpacing(6)
         self.horizontalLayout_34.setObjectName(u"horizontalLayout_34")
@@ -1558,6 +1598,9 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_25.addLayout(self.horizontalLayout_34)
 
+
+        self.verticalLayout_49.addLayout(self.verticalLayout_25)
+
         self.horizontalLayout_35 = QHBoxLayout()
         self.horizontalLayout_35.setSpacing(6)
         self.horizontalLayout_35.setObjectName(u"horizontalLayout_35")
@@ -1580,7 +1623,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_35.addWidget(self.valor_jogo)
 
 
-        self.verticalLayout_25.addLayout(self.horizontalLayout_35)
+        self.verticalLayout_49.addLayout(self.horizontalLayout_35)
 
         self.horizontalLayout_36 = QHBoxLayout()
         self.horizontalLayout_36.setObjectName(u"horizontalLayout_36")
@@ -1615,7 +1658,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_36.addWidget(self.pushButton_12)
 
 
-        self.verticalLayout_25.addLayout(self.horizontalLayout_36)
+        self.verticalLayout_49.addLayout(self.horizontalLayout_36)
 
 
         self.verticalLayout_23.addWidget(self.frame_36)
@@ -1794,7 +1837,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_30.setObjectName(u"verticalLayout_30")
         self.label_9 = QLabel(self.frame_38)
         self.label_9.setObjectName(u"label_9")
-        self.label_9.setFont(font2)
+        self.label_9.setFont(font3)
         self.label_9.setAlignment(Qt.AlignCenter)
 
         self.verticalLayout_30.addWidget(self.label_9)
@@ -2164,6 +2207,7 @@ class Ui_MainWindow(object):
         self.relatorio_desenvolvedor_button.setText(QCoreApplication.translate("MainWindow", u"Relatorios", None))
         self.sairdesenvolvedor_button.setText(QCoreApplication.translate("MainWindow", u"Sair", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Cadastrar Maquina</span></p></body></html>", None))
+        self.label_25.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\">Especifica\u00e7\u00e3o:</p></body></html>", None))
         self.radio_alta.setText(QCoreApplication.translate("MainWindow", u"Alta", None))
         self.radio_media.setText(QCoreApplication.translate("MainWindow", u"Media", None))
         self.radio_baixa.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))
@@ -2180,6 +2224,8 @@ class Ui_MainWindow(object):
         self.voltar_lista_maquinas_button.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Editar Maquina</span></p></body></html>", None))
         self.nome_maquina_editada.setText(QCoreApplication.translate("MainWindow", u"Mostrar nome Maquina ", None))
+        self.label_26.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Adicionar jogos</span></p></body></html>", None))
+        self.label_27.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Mudar especifica\u00e7\u00e3o</span></p></body></html>", None))
         self.adicionar_jogo_button.setText(QCoreApplication.translate("MainWindow", u"Adicionar Jogo", None))
         self.radio_baixo_edit.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))
         self.radio_media_edit.setText(QCoreApplication.translate("MainWindow", u"Media", None))
@@ -2207,6 +2253,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText("")
         self.voltar_alugar_maquina_button.setText(QCoreApplication.translate("MainWindow", u"Voltar", None))
         self.label_16.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:18pt; color:#ffffff;\">Cadastrar Jogo</span></p></body></html>", None))
+        self.label_28.setText(QCoreApplication.translate("MainWindow", u"<html><head/><body><p align=\"center\"><span style=\" font-size:11pt;\">Requisitos</span></p></body></html>", None))
         self.radio_jogo_alta.setText(QCoreApplication.translate("MainWindow", u"Alta", None))
         self.radio_jogo_media.setText(QCoreApplication.translate("MainWindow", u"Media", None))
         self.radio_jogo_baixa.setText(QCoreApplication.translate("MainWindow", u"Baixa", None))

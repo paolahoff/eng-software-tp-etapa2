@@ -1476,62 +1476,90 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_7">
+                <layout class="QVBoxLayout" name="verticalLayout_48">
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_18">
-                   <property name="leftMargin">
-                    <number>0</number>
+                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                   <property name="spacing">
+                    <number>2</number>
                    </property>
                    <item>
-                    <widget class="QRadioButton" name="radio_alta">
+                    <widget class="QLabel" name="label_25">
                      <property name="maximumSize">
                       <size>
-                       <width>100</width>
-                       <height>16777215</height>
+                       <width>16777215</width>
+                       <height>30</height>
                       </size>
                      </property>
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 14px;
-</string>
+                     <property name="font">
+                      <font>
+                       <pointsize>11</pointsize>
+                      </font>
                      </property>
                      <property name="text">
-                      <string>Alta</string>
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Especificação:&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QRadioButton" name="radio_media">
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
+                    <layout class="QHBoxLayout" name="horizontalLayout_18">
+                     <property name="spacing">
+                      <number>6</number>
                      </property>
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 14px;
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QRadioButton" name="radio_alta">
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font-size: 14px;
 </string>
-                     </property>
-                     <property name="text">
-                      <string>Media</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QRadioButton" name="radio_baixa">
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 14px;
+                       </property>
+                       <property name="text">
+                        <string>Alta</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="radio_media">
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font-size: 14px;
 </string>
-                     </property>
-                     <property name="text">
-                      <string>Baixa</string>
-                     </property>
-                    </widget>
+                       </property>
+                       <property name="text">
+                        <string>Media</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="radio_baixa">
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font-size: 14px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Baixa</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </item>
@@ -2047,6 +2075,36 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                     <set>Qt::AlignCenter</set>
                    </property>
                   </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_49">
+                   <item>
+                    <widget class="QLabel" name="label_26">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Adicionar jogos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_27">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>25</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Mudar especificação&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_25">
@@ -3030,65 +3088,85 @@ QPushButton:hover{background-color: #787878; color:black}</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_25">
+                <layout class="QVBoxLayout" name="verticalLayout_49">
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_34">
+                  <layout class="QVBoxLayout" name="verticalLayout_25">
                    <property name="spacing">
-                    <number>6</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>0</number>
+                    <number>3</number>
                    </property>
                    <item>
-                    <widget class="QRadioButton" name="radio_jogo_alta">
+                    <widget class="QLabel" name="label_28">
                      <property name="maximumSize">
                       <size>
-                       <width>100</width>
-                       <height>16777215</height>
+                       <width>16777215</width>
+                       <height>25</height>
                       </size>
                      </property>
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 14px;
-</string>
-                     </property>
                      <property name="text">
-                      <string>Alta</string>
+                      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;Requisitos&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QRadioButton" name="radio_jogo_media">
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
+                    <layout class="QHBoxLayout" name="horizontalLayout_34">
+                     <property name="spacing">
+                      <number>6</number>
                      </property>
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 14px;
+                     <property name="leftMargin">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QRadioButton" name="radio_jogo_alta">
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font-size: 14px;
 </string>
-                     </property>
-                     <property name="text">
-                      <string>Media</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QRadioButton" name="radio_jogo_baixa">
-                     <property name="maximumSize">
-                      <size>
-                       <width>100</width>
-                       <height>16777215</height>
-                      </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">font-size: 14px;
+                       </property>
+                       <property name="text">
+                        <string>Alta</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="radio_jogo_media">
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font-size: 14px;
 </string>
-                     </property>
-                     <property name="text">
-                      <string>Baixa</string>
-                     </property>
-                    </widget>
+                       </property>
+                       <property name="text">
+                        <string>Media</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QRadioButton" name="radio_jogo_baixa">
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font-size: 14px;
+</string>
+                       </property>
+                       <property name="text">
+                        <string>Baixa</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </item>
                   </layout>
                  </item>
