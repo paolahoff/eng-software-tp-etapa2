@@ -37,7 +37,7 @@ class Maquina:
         return
 
     def __gerar_hora_aluguel(self):
-        hora_aluguel = (self.__porcentagem_uso * self.precos[self.__especificacoes]) / 10 #tava muito caro comparado com o jogo, mas isso só entra quando resetarmos as contas
+        hora_aluguel = (self.__porcentagem_uso * self.precos[self.__especificacoes]) / 10
         return hora_aluguel
 
     def criar_maquina(self, especificacoes, porcentagem_uso, nome, provedor):
@@ -47,7 +47,7 @@ class Maquina:
         self.__provedor = provedor
         self.hora_aluguel = self.__gerar_hora_aluguel()
         lista_de_maquinas.append(self)
-        print(f'maquina {self} cadastrada')
+        #print(f'maquina {self} cadastrada') DEBBUG
         return self
 
     def buscar_jogo(self, titulo):
@@ -70,7 +70,7 @@ class Maquina:
                 return True
         
     def pegar_lista_usuarios(self):
-        print('aaaaaaaaaaaaa')
+        #print('aaaaaaaaaaaaa') DEBBUG
         return self.__lista_usuarios
     
     def usuario_na_lista(self, nome_usuario):
@@ -87,7 +87,6 @@ class Maquina:
     def calcular_ganhos(self):
         self.ganhos = self.horas_em_uso * self.hora_aluguel
         self.horas_totais += self.horas_em_uso
-        #self.horas_em_uso = 0
         return self.ganhos
 
     def get_provedor(self):
@@ -119,7 +118,7 @@ class Jogo:
         self.__gerar_hora_aluguel()
 
         lista_de_jogos.append(self)
-        print(f'jogo {self} cadastrada')
+        #print(f'jogo {self} cadastrada')  apenas para debbug
         return self
 
         
@@ -150,7 +149,7 @@ class Jogo:
         #self.tempo_jogado = 0
         return ganhos
 
-    def get_desenvolvedor(self):  # Viajei achando que ia precisar disso, mas vou deixar aqui vai que
+    def get_desenvolvedor(self):  #adicionado por garantia
         return self.__desenvolvedor
 
     def alugar(self, horas):
@@ -166,7 +165,7 @@ class Conta:
 
 
     def criar_conta(self, login, senha):
-        print(self)
+        #print(self) DEBBUG
         lista_de_contas.append(self)
         self.login = login
         self.senha = senha
@@ -229,7 +228,7 @@ class ContaDesenvolvedor(Conta):
         pass
 
     def editar_jogo(self, titulo, requisitos, valor):
-        for jogo in self.__jogos:
+        for jogo in lista_de_jogos:
             if jogo.titulo == titulo:
                 jogo.editar(requisitos, valor)
 
@@ -263,7 +262,7 @@ class ContaDesenvolvedor(Conta):
 
     def sacar_ganhos(self):
         creditos = self.pegar_creditos()
-        print(f"Sacado ganhos: R$ {creditos}")
+        #print(f"Sacado ganhos: R$ {creditos}") DEBBUG
         self.zerar_creditos()
         return creditos
 
@@ -336,7 +335,7 @@ class ContaProvedor(Conta):
             
     def sacar_ganhos(self):
         creditos = self.pegar_creditos()
-        print(f'sacado:{creditos}')
+        #print(f'sacado:{creditos}')  DEBBUG
         self.zerar_creditos()
         return creditos
 
@@ -411,7 +410,7 @@ class ContaJogador(Conta):
                 maquina_ok = True
                 break
         if not maquina_ok:
-            print("erro na maquina")
+            #print("erro na maquina") DEBBUG
             return None, None
             
         if titulo_jogo in maquina.jogos:    
@@ -420,7 +419,7 @@ class ContaJogador(Conta):
                     jogo_ok = True
                     break
         if not jogo_ok:
-            print ("Jogo e maquina incompativeis")
+            #print ("Jogo e maquina incompativeis") DEBBUG
             return None, None
         return maquina, jogo
 
@@ -599,7 +598,7 @@ def salvar_dados():
 
 if __name__ == '__main__':
     inicializar_dados()
-    print(lista_de_contas[0].login)
+    #print(lista_de_contas[0].login) DEBBUG
 
 
     
