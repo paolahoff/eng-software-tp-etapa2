@@ -306,6 +306,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def editar_jogo(self):
         self.reset_inputs()
         self.nome_jogo=self.lista_jogos_desenvolvedor.currentText()
+        self.label_9.setText(self.lista_jogos_desenvolvedor.currentText())
         self.Pages.setCurrentWidget(self.pg_editar_jogo)
 
     def listar_jogos_desenvolvedor(self):

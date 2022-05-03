@@ -228,7 +228,7 @@ class ContaDesenvolvedor(Conta):
         pass
 
     def editar_jogo(self, titulo, requisitos, valor):
-        for jogo in self.__jogos:
+        for jogo in lista_de_jogos:
             if jogo.titulo == titulo:
                 jogo.editar(requisitos, valor)
 
