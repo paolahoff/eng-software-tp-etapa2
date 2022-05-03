@@ -2,7 +2,7 @@ from queue import Empty
 import time
 import pickle
 
-# from typing_extensions import Self #Isso aqui bugou qq é isso? nao sei
+
 
 
 lista_de_contas = []
